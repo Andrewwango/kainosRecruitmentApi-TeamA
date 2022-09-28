@@ -1,8 +1,7 @@
 package com.kainos.ea;
 
 import com.kainos.ea.resources.Band;
-import com.kainos.ea.resources.FetchBandLevel;
-
+import com.kainos.ea.resources.BandLevel;
 import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
@@ -17,7 +16,7 @@ public class WebService {
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Band> getBases(){
-        List<Band> bases = FetchBandLevel.getBand();
+        List<Band> bases = BandLevel.getBand();
         return bases;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
-public class FetchBandLevel {
+public class BandLevel {
 
     private static Connection myConnection;
     
