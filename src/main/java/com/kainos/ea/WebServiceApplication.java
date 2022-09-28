@@ -8,6 +8,7 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 public class WebServiceApplication extends Application<WebServiceConfiguration> {
     private static Connection conn;
     public static void main(final String[] args) throws Exception {
@@ -27,6 +28,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
             }
         });
     }
+
     @Override
     public void run(final WebServiceConfiguration configuration,
                     final Environment environment) {
