@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Capability {
     private String capabilityName;
     private String roleName;
-    public String getRoleName() {
-        return roleName;
-    }
 
     public Capability (@JsonProperty("roleName") String roleName, @JsonProperty("capabilityName") String capabilityName ){
         this.setCapabilityName(capabilityName);
         this.setRoleName(roleName);
+    }
+
+    public String getRoleName() {
+        return roleName;
     }
 
     public void setRoleName(String roleName) {
