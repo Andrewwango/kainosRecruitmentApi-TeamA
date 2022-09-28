@@ -20,7 +20,6 @@ public class FetchBandLevel {
                         resultSet.getString("roleName"), resultSet.getString("bandName"));
                 baseList.add(dataBaseBand);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
