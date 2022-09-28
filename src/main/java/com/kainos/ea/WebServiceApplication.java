@@ -14,6 +14,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
     }
+
     @Override
     public String getName() {
         return "WebService";
