@@ -1,13 +1,16 @@
 package com.kainos.ea;
+
 import com.kainos.ea.resources.Band;
 import com.kainos.ea.resources.FetchBandLevel;
+
 import io.swagger.annotations.Api;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+
 @Path("/api")
 @Api("jobRoles")
-
 public class WebService {
 
     @GET
