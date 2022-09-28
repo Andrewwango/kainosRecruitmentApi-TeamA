@@ -2,11 +2,11 @@ package com.kainos.ea.resources;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class base {
+public class Band {
     private String bandName;
     private String roleName;
 
-    public base (@JsonProperty("roleName") String roleName,@JsonProperty("bandName") String bandName ){
+    public Band(@JsonProperty("roleName") String roleName, @JsonProperty("bandName") String bandName ){
         this.setBandName(bandName);
         this.setRoleName(roleName);
     }
@@ -26,9 +26,4 @@ public class base {
     public String getRoleName(){
         return roleName;
     }
-
-
-
-
-
 }

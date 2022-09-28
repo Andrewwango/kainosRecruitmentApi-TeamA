@@ -1,7 +1,5 @@
 package com.kainos.ea.resources;
 
-
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,13 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kainos.ea.WebServiceApplication.getConnection;
+import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
-public class getBases {
+public class BandLevel {
+
     private static Connection myConnection;
-
-    public static List<base> getBases(){
-        List<base> baseList = new ArrayList();
+    
+    public static List<Band> getBand(){
+        List<Band> baseList = new ArrayList();
         ResultSet resultSet = null;
 
         try{
@@ -24,21 +23,13 @@ public class getBases {
             resultSet = st.executeQuery("select roleName, bandName from jobRoles join band where jobRoles.jobRoleID=band.jobRoleID");
 
             while (resultSet.next()) {
-               base dataBaseBand = new base(
+               Band dataBaseBand = new Band(
                         resultSet.getString("roleName"), resultSet.getString("bandName"));
-
-
                 baseList.add(dataBaseBand);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return baseList;
-
-
     }
-
-
 }

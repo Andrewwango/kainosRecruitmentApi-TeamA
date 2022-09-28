@@ -1,8 +1,8 @@
 package com.kainos.ea;
 
+import com.kainos.ea.resources.Band;
+import com.kainos.ea.resources.BandLevel;
 import com.kainos.ea.resources.Capability;
-import com.kainos.ea.resources.base;
-import com.kainos.ea.resources.getBases;
 import com.kainos.ea.resources.Capabilities;
 import io.swagger.annotations.Api;
 
@@ -13,18 +13,12 @@ import java.util.List;
 @Path("/api")
 @Api("jobRoles")
 public class WebService {
-    @GET
-    @Path("/print/{msg}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getMsg(@PathParam("msg") String message) {
-        return "Hello from a RESTful Web service: " + message;
-    }
 
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<base> getBases(){
-        List<base> bases = getBases.getBases();
+    public List<Band> getBases(){
+        List<Band> bases = BandLevel.getBand();
         return bases;
     }
 
