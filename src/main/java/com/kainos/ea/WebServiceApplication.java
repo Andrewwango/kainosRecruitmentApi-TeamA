@@ -1,10 +1,13 @@
 package com.kainos.ea;
+
 import com.kainos.ea.database.DataBaseConnection;
+
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
