@@ -21,7 +21,7 @@ public class CapabilityLevel {
         try{
             Connection myConnection = getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("select roleName, capabilityName from jobRoles join capabilities where jobRoles.jobRoleID=capabilities.jobRoleID");
+            resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.jobRoleID=capabilities.jobRoleID");
 
             while (resultSet.next()) {
                 Capability cap = new Capability(
