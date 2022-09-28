@@ -1,9 +1,11 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.dao.BandLevel;
+import com.kainos.ea.dao.CapabilityLevel;
 import com.kainos.ea.dao.JobRoleLevel;
 import com.kainos.ea.dao.SpecificationLevel;
 import com.kainos.ea.models.Band;
+import com.kainos.ea.models.Capability;
 import io.swagger.annotations.Api;
 import com.kainos.ea.models.JobRole;
 import javax.ws.rs.*;
@@ -41,7 +43,7 @@ public class WebService {
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Capability> getCapabilities(){
-        List<Capability> capabilities = Capabilities.getCapabilities();
+        List<Capability> capabilities = CapabilityLevel.getCapabilities();
         return capabilities;
     }
 }

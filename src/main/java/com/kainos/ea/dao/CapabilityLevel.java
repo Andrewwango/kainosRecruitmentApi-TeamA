@@ -1,4 +1,6 @@
-package com.kainos.ea.resources;
+package com.kainos.ea.dao;
+
+import com.kainos.ea.models.Capability;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
-
-public class Capabilities {
+public class CapabilityLevel {
 
     private static Connection myConnection;
 
