@@ -1,11 +1,11 @@
-package com.kainos.ea.dataBase;
+package com.kainos.ea.database;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class dataBaseConnection {
+public class DataBaseConnection {
     private static Connection conn;
 
     public static Connection getConnection() {

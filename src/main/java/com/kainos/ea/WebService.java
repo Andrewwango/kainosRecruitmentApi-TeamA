@@ -1,10 +1,7 @@
 package com.kainos.ea;
-
-
-import com.kainos.ea.resources.base;
-import com.kainos.ea.resources.getBases;
+import com.kainos.ea.resources.Base;
+import com.kainos.ea.resources.Bases;
 import io.swagger.annotations.Api;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -22,8 +19,8 @@ public class WebService {
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<base> getBases(){
-        List<base> bases = getBases.getBases();
+    public List<Base> getBases(){
+        List<Base> bases = Bases.Bases();
         return bases;
     }
 
