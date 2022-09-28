@@ -1,15 +1,12 @@
 package com.kainos.ea.dao;
 
-
 import com.kainos.ea.models.Band;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
 public class BandLevel {

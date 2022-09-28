@@ -5,7 +5,6 @@ import com.kainos.ea.dao.SpecificationLevel;
 import com.kainos.ea.models.Band;
 import io.swagger.annotations.Api;
 import com.kainos.ea.models.JobRole;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
