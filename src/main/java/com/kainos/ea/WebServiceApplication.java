@@ -26,7 +26,6 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
                 return configuration.getSwagger();
             }
         });
-
     }
     @Override
     public void run(final WebServiceConfiguration configuration,
