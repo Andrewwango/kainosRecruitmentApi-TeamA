@@ -6,10 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
-import static com.kainos.ea.WebServiceApplication.getConnection;
 
 public class Capabilities {
+
     private static Connection myConnection;
 
     public static List<Capability> getCapabilities(){
