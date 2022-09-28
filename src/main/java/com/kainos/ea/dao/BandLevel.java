@@ -1,4 +1,7 @@
-package com.kainos.ea.resources;
+package com.kainos.ea.dao;
+
+
+import com.kainos.ea.models.Band;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

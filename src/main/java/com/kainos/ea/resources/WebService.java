@@ -1,10 +1,10 @@
-package com.kainos.ea;
+package com.kainos.ea.resources;
 
-import com.kainos.ea.resources.Band;
-import com.kainos.ea.resources.BandLevel;
-import dao.SpecificationLevel;
+import com.kainos.ea.dao.BandLevel;
+import com.kainos.ea.dao.SpecificationLevel;
+import com.kainos.ea.models.Band;
 import io.swagger.annotations.Api;
-import models.JobRole;
+import com.kainos.ea.models.JobRole;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

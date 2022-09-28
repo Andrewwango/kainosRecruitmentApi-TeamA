@@ -2,6 +2,7 @@ package com.kainos.ea;
 
 import com.kainos.ea.database.DataBaseConnection;
 
+import com.kainos.ea.resources.WebService;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;

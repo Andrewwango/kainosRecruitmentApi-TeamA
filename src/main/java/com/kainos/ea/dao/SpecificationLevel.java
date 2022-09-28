@@ -1,6 +1,6 @@
-package dao;
+package com.kainos.ea.dao;
 
-import models.JobRole;
+import com.kainos.ea.models.JobRole;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
