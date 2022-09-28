@@ -1,4 +1,5 @@
 package com.kainos.ea.database;
+
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
