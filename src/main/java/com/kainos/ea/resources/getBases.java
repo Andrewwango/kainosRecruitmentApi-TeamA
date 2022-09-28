@@ -9,7 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kainos.ea.WebServiceApplication.getConnection;
+import static com.kainos.ea.dataBase.dataBaseConnection.getConnection;
+
 
 public class getBases {
     private static Connection myConnection;

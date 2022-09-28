@@ -1,5 +1,6 @@
 package com.kainos.ea;
 
+import com.kainos.ea.dataBase.dataBaseConnection;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -55,7 +56,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         // TODO: implement application
         environment.jersey().register(new WebService());
         try {
-            Connection con = getConnection();
+            Connection con = dataBaseConnection.getConnection();
             Statement st = con.createStatement();
             st.execute("USE team_A");
 
@@ -70,6 +71,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         }
     }
 
+    /*
     public static Connection getConnection() {
         String user;
         String password;
@@ -105,5 +107,5 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         return null;
     }
 
-
+*/
 }
