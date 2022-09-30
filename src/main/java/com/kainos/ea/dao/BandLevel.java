@@ -20,7 +20,7 @@ public class BandLevel {
         try{
             Connection myConnection = getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("select roleName, bandName from jobRoles join band where jobRoles.jobRoleID=band.jobRoleID");
+            resultSet = st.executeQuery("select roleName, bandName from jobRoles join band where jobRoles.bandID = band.bandID;");
 
             while (resultSet.next()) {
                Band dataBaseBand = new Band(

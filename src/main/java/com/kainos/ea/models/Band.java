@@ -11,11 +11,11 @@ public class Band {
         this.setRoleName(roleName);
     }
 
-    private void setRoleName(String roleName) {
+    public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
 
-    private void setBandName(String bandName) {
+    public void setBandName(String bandName) {
         this.bandName = bandName;
     }
 
