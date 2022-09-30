@@ -1,6 +1,8 @@
 package com.kainos.ea.dao;
 
+import com.kainos.ea.exception.DatabaseConnectionException;
 import com.kainos.ea.models.Capability;
+import com.mysql.cj.exceptions.DataConversionException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,24 +16,22 @@ public class CapabilityLevel {
 
     private static Connection myConnection;
 
-    public static List<Capability> getCapabilities(){
+    public static List<Capability> getCapabilities() throws SQLException {
         List<Capability> capList = new ArrayList();
         ResultSet resultSet = null;
 
-        try{
-            Connection myConnection = getConnection();
-            Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.jobRoleID=capabilities.jobRoleID");
 
-            while (resultSet.next()) {
-                Capability cap = new Capability(
-                        resultSet.getString("roleName"),
-                        resultSet.getString("capabilityName"));
-                capList.add(cap);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        Connection myConnection = getConnection();
+        Statement st = myConnection.createStatement();
+        resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.capabilityID=capabilities.capabilityID");
+
+        while (resultSet.next()) {
+            Capability cap = new Capability(
+                    resultSet.getString("roleName"),
+                    resultSet.getString("capabilityName"));
+            capList.add(cap);
         }
+
         return capList;
     }
 }
