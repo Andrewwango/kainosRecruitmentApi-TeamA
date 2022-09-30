@@ -21,9 +21,12 @@ public class SpecificationLevel {
 
             while (resultSet.next()) {
                 JobRole jobRole = new JobRole(
+                        resultSet.getInt("jobRoleID"),
                         resultSet.getString("roleName"),
                         resultSet.getString("specification"),
-                        resultSet.getString("link")
+                        resultSet.getString("link"),
+                        resultSet.getInt("bandID"),
+                        resultSet.getInt("capabilityID")
                 );
                 jobRole.setJobRoleId(jobRoleId);
                 return jobRole;
