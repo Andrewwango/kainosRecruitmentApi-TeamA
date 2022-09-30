@@ -11,7 +11,6 @@ public class JobRole {
     private int bandID;
     private int capabilityID;
 
-
     public int getJobRoleId() {
         return jobRoleId;
     }
@@ -68,8 +67,4 @@ public class JobRole {
         this.setBandID(bandID);
         this.setCapabilityID(capabilityID);
     }
-
-
-
-
 }
