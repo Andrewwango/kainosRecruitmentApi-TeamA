@@ -8,6 +8,8 @@ public class JobRole {
     private String roleName;
     private String specification;
     private String link;
+    private int bandID;
+    private int capabilityID;
 
     public int getJobRoleId() {
         return jobRoleId;
@@ -41,14 +43,28 @@ public class JobRole {
         this.link = link;
     }
 
+    public int getBandID() { return bandID; }
+
+    public void setBandID(int bandID) { this.bandID = bandID; }
+
+    public int getCapabilityID() { return capabilityID; }
+
+    public void setCapabilityID(int capabilityID) { this.capabilityID = capabilityID; }
+
     @JsonCreator
     public JobRole(
+            @JsonProperty("jobRoleID") int jobRoleID,
             @JsonProperty("roleName") String name,
             @JsonProperty("specification") String specification,
-            @JsonProperty("link") String link)
+            @JsonProperty("link") String link,
+            @JsonProperty("bandID") int bandID,
+            @JsonProperty("capabilityID") int capabilityID)
     {
+        this.setJobRoleId(jobRoleID);
         this.setRoleName(name);
         this.setSpecification(specification);
         this.setLink(link);
+        this.setBandID(bandID);
+        this.setCapabilityID(capabilityID);
     }
 }

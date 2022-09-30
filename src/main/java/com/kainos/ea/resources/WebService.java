@@ -20,8 +20,8 @@ public class WebService {
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
     public List<JobRole> getJobRoles() throws SQLException {
-        List<JobRole> job_roles = JobRoleLevel.getJobRoles();
-        return job_roles;
+        List<JobRole> jobRoles = JobRoleLevel.getJobRoles();
+        return jobRoles;
     }
     @GET
     @Path("/job-specification/{jobRoleId}")

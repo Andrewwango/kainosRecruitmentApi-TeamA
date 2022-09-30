@@ -21,9 +21,12 @@ public class JobRoleLevel {
                     "SELECT * " + "FROM jobRoles;");
             while (rs.next()) {
                 JobRole job = new JobRole(
+                        rs.getInt("jobRoleID"),
                         rs.getString("roleName"),
                         rs.getString("specification"),
-                        rs.getString("link")
+                        rs.getString("link"),
+                        rs.getInt("bandID"),
+                        rs.getInt("capabilityID")
                 );
                 jobs.add(job);
             }
