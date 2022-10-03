@@ -1,11 +1,11 @@
 package com.kainos.ea.dao;
 
+import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.models.JobRole;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static com.kainos.ea.database.DataBaseConnection.getConnection;
 
 public class SpecificationLevel {
 
@@ -14,20 +14,22 @@ public class SpecificationLevel {
         ResultSet resultSet;
 
         try{
-            Connection myConnection = getConnection();
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
 
             resultSet = st.executeQuery("SELECT * FROM jobRoles WHERE jobRoleID = " + jobRoleId + ";");
 
             while (resultSet.next()) {
-                JobRole jobRole = new JobRole(
-                        resultSet.getInt("jobRoleID"),
-                        resultSet.getString("roleName"),
-                        resultSet.getString("specification"),
-                        resultSet.getString("link"),
-                        resultSet.getInt("bandID"),
-                        resultSet.getInt("capabilityID")
-                );
+                JobRole jobRole = JobRole.builder()
+                    .jobRoleId(resultSet.getInt("jobRoleID"))
+                    .roleName(resultSet.getString("roleName"))
+                    .specification(resultSet.getString("specification"))
+                    .link(resultSet.getString("link"))
+                    .bandID(resultSet.getInt("bandID"))
+                    .capabilityID(resultSet.getInt("capabilityID"))
+                    .build();
+
                 jobRole.setJobRoleId(jobRoleId);
                 return jobRole;
             }
