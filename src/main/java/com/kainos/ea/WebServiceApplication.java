@@ -1,7 +1,9 @@
 package com.kainos.ea;
 
-import com.kainos.ea.database.DataBaseConnection;
-import com.kainos.ea.resources.WebService;
+import com.kainos.ea.dao.BandLevel;
+import com.kainos.ea.dao.JobRoleLevel;
+import com.kainos.ea.utils.DataBaseConnection;
+import com.kainos.ea.resource.JobResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -13,13 +15,16 @@ import java.sql.Statement;
 
 public class WebServiceApplication extends Application<WebServiceConfiguration> {
     private static Connection conn;
+    private JobRoleLevel jobRoleLevel;
+    private BandLevel bandLevel;
+
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
     }
 
     @Override
     public String getName() {
-        return "WebService";
+        return "JobResource";
     }
 
     @Override
@@ -35,10 +40,12 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     @Override
     public void run(final WebServiceConfiguration configuration,
                     final Environment environment) {
-        environment.jersey().register(new WebService());
+        jobRoleLevel = new JobRoleLevel();
+        bandLevel = new BandLevel();
+        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel));
         try {
-            DataBaseConnection databaseConnecter = new DataBaseConnection();
-            Connection con = databaseConnecter.getConnection();
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection con = dataBaseConnection.getConnection();
             Statement st = con.createStatement();
             st.execute("USE team_A");
         } catch (SQLException e) {

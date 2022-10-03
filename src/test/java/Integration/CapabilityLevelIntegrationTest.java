@@ -29,6 +29,5 @@ class CapabilityLevelIntegrationTest {
                 .get(List.class);
 
         Assertions.assertTrue(response.size() > 0);
-
     }
 }

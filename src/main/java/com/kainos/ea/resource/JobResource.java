@@ -1,31 +1,38 @@
-package com.kainos.ea.resources;
+package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.BandLevel;
 import com.kainos.ea.dao.CapabilityLevel;
 import com.kainos.ea.dao.JobRoleLevel;
 import com.kainos.ea.dao.SpecificationLevel;
-import com.kainos.ea.exception.DatabaseConnectionException;
 import com.kainos.ea.models.Band;
 import com.kainos.ea.models.Capability;
 import io.swagger.annotations.Api;
 import com.kainos.ea.models.JobRole;
-import org.eclipse.jetty.http.HttpStatus;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
 
 @Path("/api")
 @Api("jobRoles")
-public class WebService {
+public class JobResource {
+
+    private JobRoleLevel jobRoleLevel;
+    private BandLevel bandLevel;
+
+
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel) {
+        this.jobRoleLevel = jobRoleLevel;
+        this.bandLevel = bandLevel;
+    }
+
     @GET
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<JobRole> getJobRoles() throws SQLException {
-        List<JobRole> job_roles = JobRoleLevel.getJobRoles();
-        return job_roles;
+    public List<JobRole> getJobRoles()
+    throws SQLException {
+        List<JobRole> jobRoles = jobRoleLevel.getJobRoles();
+        return jobRoles;
     }
     @GET
     @Path("/job-specification/{jobRoleId}")
@@ -38,22 +45,16 @@ public class WebService {
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Band> getBases(){
-        List<Band> bases = BandLevel.getBand();
+    public List<Band> getBases() {
+        List<Band> bases = bandLevel.getBand();
         return bases;
     }
 
     @GET
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCapabilities() {
-        try {
-            CapabilityLevel capLevel = new CapabilityLevel();
-            return Response.ok(capLevel.getCapabilities()).build();
-        } catch (SQLException e) {
-            System.out.println(e);
-            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
-        }
-
+    public List<Capability> getCapabilities(){
+        List<Capability> capabilities = CapabilityLevel.getCapabilities();
+        return capabilities;
     }
 }

@@ -1,9 +1,7 @@
 package com.kainos.ea.dao;
 
-import com.kainos.ea.database.DataBaseConnection;
-import com.kainos.ea.exception.DatabaseConnectionException;
+import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.models.Capability;
-import com.mysql.cj.exceptions.DataConversionException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,24 +12,27 @@ import java.util.List;
 
 public class CapabilityLevel {
 
-    private static Connection myConnection;
-
-    public List<Capability> getCapabilities() throws SQLException {
+    public static List<Capability> getCapabilities(){
         List<Capability> capList = new ArrayList();
         ResultSet resultSet = null;
 
-        DataBaseConnection databaseConnecter = new DataBaseConnection();
-        Connection myConnection = databaseConnecter.getConnection();
-        Statement st = myConnection.createStatement();
-        resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.capabilityID=capabilities.capabilityID");
+        try{
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
+            Statement st = myConnection.createStatement();
+            resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.jobRoleID=capabilities.jobRoleID");
 
-        while (resultSet.next()) {
-            Capability cap = new Capability(
-                    resultSet.getString("roleName"),
-                    resultSet.getString("capabilityName"));
-            capList.add(cap);
+            while (resultSet.next()) {
+                Capability cap = Capability.builder()
+                    .capabilityName(resultSet.getString("capabilityName"))
+                    .roleName(resultSet.getString("roleName"))
+                    .build();
+
+                capList.add(cap);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
         return capList;
     }
 }

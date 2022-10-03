@@ -16,9 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class CapabilityLevelServiceTest {
     CapabilityLevel cap = Mockito.mock(CapabilityLevel.class);
     DataBaseConnection databaseConnector = Mockito.mock(DataBaseConnection.class);
-
-
-
     Connection conn;
 
     @Test
@@ -40,5 +37,4 @@ class CapabilityLevelServiceTest {
         assertThrows(SQLException.class,
                 () -> cap.getCapabilities());
     }
-
 }
