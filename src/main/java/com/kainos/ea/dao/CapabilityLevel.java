@@ -13,6 +13,7 @@ import java.util.List;
 public class CapabilityLevel {
 
     public List<Capability> getCapabilities() throws SQLException{
+  
         List<Capability> capList = new ArrayList();
         ResultSet resultSet = null;
 

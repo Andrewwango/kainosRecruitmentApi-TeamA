@@ -18,10 +18,16 @@ import java.util.List;
 public class JobResource {
 
     private JobRoleLevel jobRoleLevel;
+    private SpecificationLevel specificationLevel;
     private BandLevel bandLevel;
     private CapabilityLevel capabilityLevel;
-    private SpecificationLevel specificationLevel;
 
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel) {
+        this.jobRoleLevel = jobRoleLevel;
+        this.bandLevel = bandLevel;
+        this.capabilityLevel = capabilityLevel;
+        this.specificationLevel = specificationLevel;
+    }
 
     public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel) {
         this.jobRoleLevel = jobRoleLevel;
@@ -38,10 +44,11 @@ public class JobResource {
         List<JobRole> jobRoles = jobRoleLevel.getJobRoles();
         return jobRoles;
     }
+
     @GET
     @Path("/job-specification/{jobRoleId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public JobRole getJobRole(@PathParam("jobRoleId") int jobRoleId){
+    public JobRole getJobRole(@PathParam("jobRoleId") int jobRoleId) throws SQLException {
         JobRole jobRole = specificationLevel.getJobRole(jobRoleId);
         return jobRole;
     }
@@ -49,7 +56,7 @@ public class JobResource {
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Band> getBases() {
+    public List<Band> getBases() throws SQLException {
         List<Band> bases = bandLevel.getBand();
         return bases;
     }

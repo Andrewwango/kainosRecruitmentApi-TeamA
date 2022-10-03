@@ -8,35 +8,30 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SpecificationLevel {
-
-    public JobRole getJobRole(int jobRoleId){
-
-        ResultSet resultSet;
-
-        try{
+    public static JobRole getJobRole(int jobRoleId) throws SQLException {
+        JobRole jobRole = null;
+      
+        try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "SELECT * FROM jobRoles WHERE jobRoleID = " + jobRoleId + ";");
 
-            resultSet = st.executeQuery("SELECT * FROM jobRoles WHERE jobRoleID = " + jobRoleId + ";");
-
-            while (resultSet.next()) {
-                JobRole jobRole = JobRole.builder()
-                    .jobRoleId(resultSet.getInt("jobRoleID"))
-                    .roleName(resultSet.getString("roleName"))
-                    .specification(resultSet.getString("specification"))
-                    .link(resultSet.getString("link"))
-                    .bandID(resultSet.getInt("bandID"))
-                    .capabilityID(resultSet.getInt("capabilityID"))
-                    .build();
-
-                jobRole.setJobRoleId(jobRoleId);
-                return jobRole;
+            while (rs.next()) {
+                JobRole job = JobRole.builder()
+                        .jobRoleId(rs.getInt("jobRoleID"))
+                        .roleName(rs.getString("roleName"))
+                        .specification(rs.getString("specification"))
+                        .link(rs.getString("link"))
+                        .bandID(rs.getInt("bandID"))
+                        .capabilityID(rs.getInt("capabilityID"))
+                        .build();
+                jobRole = job;
             }
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw e;
         }
-        return null;
+        return jobRole;
     }
 }

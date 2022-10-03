@@ -14,7 +14,7 @@ public class BandLevel {
 
     private static Connection myConnection;
     
-    public List<Band> getBand(){
+    public List<Band> getBand() throws SQLException{
         List<Band> baseList = new ArrayList();
         ResultSet resultSet = null;
 
