@@ -214,4 +214,4 @@ fabric.properties
 
 API-TeamA.iml
 
-properties
+src/main/resources/Properties
