@@ -37,7 +37,8 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
                     final Environment environment) {
         environment.jersey().register(new WebService());
         try {
-            Connection con = DataBaseConnection.getConnection();
+            DataBaseConnection databaseConnecter = new DataBaseConnection();
+            Connection con = databaseConnecter.getConnection();
             Statement st = con.createStatement();
             st.execute("USE team_A");
         } catch (SQLException e) {

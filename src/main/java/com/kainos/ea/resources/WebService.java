@@ -48,7 +48,8 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCapabilities() {
         try {
-            return Response.ok(CapabilityLevel.getCapabilities()).build();
+            CapabilityLevel capLevel = new CapabilityLevel();
+            return Response.ok(capLevel.getCapabilities()).build();
         } catch (SQLException e) {
             System.out.println(e);
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
