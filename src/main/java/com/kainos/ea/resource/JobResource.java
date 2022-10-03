@@ -1,4 +1,4 @@
-package com.kainos.ea.resources;
+package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.BandLevel;
 import com.kainos.ea.dao.CapabilityLevel;
@@ -15,12 +15,23 @@ import java.util.List;
 
 @Path("/api")
 @Api("jobRoles")
-public class WebService {
+public class JobResource {
+
+    private JobRoleLevel jobRoleLevel;
+    private BandLevel bandLevel;
+
+
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel) {
+        this.jobRoleLevel = jobRoleLevel;
+        this.bandLevel = bandLevel;
+    }
+
     @GET
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<JobRole> getJobRoles() throws SQLException {
-        List<JobRole> jobRoles = JobRoleLevel.getJobRoles();
+    public List<JobRole> getJobRoles()
+    throws SQLException {
+        List<JobRole> jobRoles = jobRoleLevel.getJobRoles();
         return jobRoles;
     }
     @GET
@@ -34,8 +45,8 @@ public class WebService {
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Band> getBases(){
-        List<Band> bases = BandLevel.getBand();
+    public List<Band> getBases() {
+        List<Band> bases = bandLevel.getBand();
         return bases;
     }
 

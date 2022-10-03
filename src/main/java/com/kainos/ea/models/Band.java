@@ -1,29 +1,17 @@
 package com.kainos.ea.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Data
+@EqualsAndHashCode
+@ToString
+@Builder
+@Getter
 public class Band {
     private String bandName;
     private String roleName;
-
-    public Band(@JsonProperty("roleName") String roleName, @JsonProperty("bandName") String bandName ){
-        this.setBandName(bandName);
-        this.setRoleName(roleName);
-    }
-
-    private void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    private void setBandName(String bandName) {
-        this.bandName = bandName;
-    }
-
-    public String getBandName(){
-        return bandName;
-    }
-
-    public String getRoleName(){
-        return roleName;
-    }
 }

@@ -1,14 +1,15 @@
-package com.kainos.ea.database;
+package com.kainos.ea.utils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.util.Properties;
 
 public class DataBaseConnection {
+
     private static Connection conn;
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         String user;
         String password;
         String host;
@@ -19,7 +20,7 @@ public class DataBaseConnection {
 
         try {
             FileInputStream propsStream =
-                    new FileInputStream("src/properties");
+                    new FileInputStream("src/main/resources/Properties");
             Properties props = new Properties();
             props.load(propsStream);
 
@@ -32,8 +33,10 @@ public class DataBaseConnection {
                         "Properties file must exist and must contain "
                                 + "user, password, and host properties.");
 
-            conn = DriverManager.getConnection("jdbc:mysql://"
-                    + host + "/", user, password);
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+
+            conn = connectionFactory.createConnection("jdbc:mysql://"
+                    + host + ":" + "3306" + "/team_A",  props);
 
             return conn;
         } catch (Exception e) {
