@@ -34,8 +34,9 @@ public class WebService {
     @GET
     @Path("/viewBandLevel")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Band> getBases(){
-        List<Band> bases = BandLevel.getBand();
+    public List<Band> getBases() throws SQLException {
+        BandLevel band = new BandLevel();
+        List<Band> bases = band.getBand();
         return bases;
     }
 

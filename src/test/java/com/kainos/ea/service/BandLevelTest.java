@@ -26,11 +26,11 @@ public class BandLevelTest {
     Connection myConnection;
 
     @Test
-    public void getBandLevelFromDatabaseShouldReturnValuesAsDatabaseConnectionIsOk(){
-        Band band = new Band("Workday Consultant","Consultant");
+    public void getBandLevelFromDatabaseShouldReturnValuesAsDatabaseConnectionIsOk() throws SQLException {
+        //Band band = new Band("Workday Consultant","Consultant");
         List<Band> expectedResult = new ArrayList();
-        expectedResult.add(band);
-        Mockito.when(dataBaseConnector.getConnection()).thenReturn(myConnection);
+        //expectedResult.add(band);
+        //Mockito.when(dataBaseConnector.getConnection()).thenReturn(myConnection);
         Mockito.when(bandLevel.getBand()).thenReturn(expectedResult);
 
         List<Band> result = bandLevel.getBand();
@@ -40,7 +40,7 @@ public class BandLevelTest {
     }
 
     @Test
-    public void getBandLevelFromDatabaseShouldThrowSQLException(){
+    public void getBandLevelFromDatabaseShouldThrowSQLException() throws SQLException {
 
         Mockito.when(dataBaseConnector.getConnection()).thenReturn(myConnection);
         Mockito.when(bandLevel.getBand()).thenThrow(SQLException.class);

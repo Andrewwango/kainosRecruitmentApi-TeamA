@@ -8,7 +8,7 @@ import java.util.Properties;
 public class DataBaseConnection {
     private static Connection conn;
 
-    public static Connection getConnection() {
+    public  Connection getConnection() {
         String user;
         String password;
         String host;

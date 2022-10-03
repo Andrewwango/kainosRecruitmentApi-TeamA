@@ -1,5 +1,6 @@
 package com.kainos.ea.dao;
 
+import com.kainos.ea.database.DataBaseConnection;
 import com.kainos.ea.models.JobRole;
 
 import java.sql.Connection;
@@ -9,13 +10,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kainos.ea.database.DataBaseConnection.getConnection;
+
 
 public class JobRoleLevel {
     public static List<JobRole> getJobRoles() throws SQLException {
         List<JobRole> jobs = new ArrayList<>();
         try {
-            Connection myConnection = getConnection();
+            DataBaseConnection data = new DataBaseConnection();
+            Connection myConnection = data.getConnection();
             Statement st = myConnection.createStatement();
             ResultSet rs = st.executeQuery(
                     "SELECT * " + "FROM jobRoles;");

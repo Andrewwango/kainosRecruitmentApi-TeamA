@@ -1,5 +1,6 @@
 package com.kainos.ea.dao;
 
+import com.kainos.ea.database.DataBaseConnection;
 import com.kainos.ea.models.Capability;
 
 import java.sql.Connection;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import static com.kainos.ea.database.DataBaseConnection.getConnection;
+
 
 public class CapabilityLevel {
 
@@ -19,7 +20,8 @@ public class CapabilityLevel {
         ResultSet resultSet = null;
 
         try{
-            Connection myConnection = getConnection();
+            DataBaseConnection data = new DataBaseConnection();
+            Connection myConnection = data.getConnection();
             Statement st = myConnection.createStatement();
             resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.capabilityID=capabilities.capabilityID");
 
