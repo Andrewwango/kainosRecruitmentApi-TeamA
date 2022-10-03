@@ -14,7 +14,7 @@ public class BandLevel {
 
     private static Connection myConnection;
     
-    public List<Band> getBand(){
+    public List<Band> getBand() throws SQLException{
         List<Band> baseList = new ArrayList();
         ResultSet resultSet = null;
 
@@ -22,7 +22,7 @@ public class BandLevel {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("select roleName, bandName from jobRoles join band where jobRoles.jobRoleID=band.jobRoleID");
+            resultSet = st.executeQuery("select roleName, bandName from jobRoles join band where jobRoles.bandID = band.bandID;");
 
             while (resultSet.next()) {
                Band dataBaseBand = Band.builder()
