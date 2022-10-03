@@ -2,7 +2,6 @@ package com.kainos.ea.utils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
-
 import java.util.Properties;
 
 public class DataBaseConnection {
@@ -31,7 +30,7 @@ public class DataBaseConnection {
             if (user == null || password == null || host == null)
                 throw new IllegalArgumentException(
                         "Properties file must exist and must contain "
-                                + "user, password, and host properties.");
+                                + "user, password, and host Properties.");
 
             ConnectionFactory connectionFactory = new ConnectionFactory();
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CapabilityLevel {
 
-    public static List<Capability> getCapabilities(){
+    public List<Capability> getCapabilities() throws SQLException{
         List<Capability> capList = new ArrayList();
         ResultSet resultSet = null;
 
@@ -20,7 +20,7 @@ public class CapabilityLevel {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.jobRoleID=capabilities.jobRoleID");
+            resultSet = st.executeQuery("SELECT roleName, capabilityName FROM jobRoles JOIN capabilities WHERE jobRoles.capabilityID=capabilities.capabilityID");
 
             while (resultSet.next()) {
                 Capability cap = Capability.builder()

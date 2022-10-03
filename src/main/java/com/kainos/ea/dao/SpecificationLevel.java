@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class SpecificationLevel {
 
-    public static JobRole getJobRole(int jobRoleId){
+    public JobRole getJobRole(int jobRoleId){
 
         ResultSet resultSet;
 

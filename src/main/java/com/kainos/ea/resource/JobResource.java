@@ -19,11 +19,15 @@ public class JobResource {
 
     private JobRoleLevel jobRoleLevel;
     private BandLevel bandLevel;
+    private CapabilityLevel capabilityLevel;
+    private SpecificationLevel specificationLevel;
 
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel) {
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
+        this.capabilityLevel = capabilityLevel;
+        this.specificationLevel = specificationLevel;
     }
 
     @GET
@@ -38,7 +42,7 @@ public class JobResource {
     @Path("/job-specification/{jobRoleId}")
     @Produces(MediaType.APPLICATION_JSON)
     public JobRole getJobRole(@PathParam("jobRoleId") int jobRoleId){
-        JobRole jobRole = SpecificationLevel.getJobRole(jobRoleId);
+        JobRole jobRole = specificationLevel.getJobRole(jobRoleId);
         return jobRole;
     }
 
@@ -53,8 +57,8 @@ public class JobResource {
     @GET
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Capability> getCapabilities(){
-        List<Capability> capabilities = CapabilityLevel.getCapabilities();
+    public List<Capability> getCapabilities() throws SQLException {
+        List<Capability> capabilities = capabilityLevel.getCapabilities();
         return capabilities;
     }
 }

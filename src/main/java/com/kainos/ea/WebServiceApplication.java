@@ -1,7 +1,9 @@
 package com.kainos.ea;
 
 import com.kainos.ea.dao.BandLevel;
+import com.kainos.ea.dao.CapabilityLevel;
 import com.kainos.ea.dao.JobRoleLevel;
+import com.kainos.ea.dao.SpecificationLevel;
 import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.resource.JobResource;
 import io.dropwizard.Application;
@@ -17,6 +19,8 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private static Connection conn;
     private JobRoleLevel jobRoleLevel;
     private BandLevel bandLevel;
+    private CapabilityLevel capabilityLevel;
+    private SpecificationLevel specificationLevel;
 
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
@@ -42,7 +46,9 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
                     final Environment environment) {
         jobRoleLevel = new JobRoleLevel();
         bandLevel = new BandLevel();
-        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel));
+        capabilityLevel = new CapabilityLevel();
+        specificationLevel = new SpecificationLevel();
+        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel, capabilityLevel, specificationLevel));
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection con = dataBaseConnection.getConnection();

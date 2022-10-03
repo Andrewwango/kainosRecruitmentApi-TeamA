@@ -1,10 +1,8 @@
-package dao;
+package com.kainos.ea.dao;
 
-import com.kainos.ea.dao.CapabilityLevel;
-import com.kainos.ea.database.DataBaseConnection;
 import com.kainos.ea.exception.DatabaseConnectionException;
 import com.kainos.ea.models.Capability;
-import com.kainos.ea.resources.WebService;
+import com.kainos.ea.utils.DataBaseConnection;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.sql.Connection;
@@ -13,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CapabilityLevelServiceTest {
+class CapabilityLevelTest {
     CapabilityLevel cap = Mockito.mock(CapabilityLevel.class);
     DataBaseConnection databaseConnector = Mockito.mock(DataBaseConnection.class);
     Connection conn;
+    private CapabilityLevel capabilityLevel;
 
     @Test
     void getCapabilities_shouldReturnAList() throws SQLException {
@@ -29,8 +28,7 @@ class CapabilityLevelServiceTest {
         assertEquals(result, expectedResult);
     }
     @Test
-    void getCapabilities_shouldThrowSQLException_whenProvoked() throws SQLException, DatabaseConnectionException {
-        WebService service = new WebService();
+    void getCapabilities_shouldThrowSQLException_whenProvoked() throws SQLException {
         Mockito.when(databaseConnector.getConnection()).thenReturn(conn);
         Mockito.when(cap.getCapabilities()).thenThrow(SQLException.class);
 
