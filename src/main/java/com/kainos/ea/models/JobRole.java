@@ -1,18 +1,14 @@
 package com.kainos.ea.models;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode
 @ToString
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class JobRole {
     private int jobRoleId;
     private String roleName;
