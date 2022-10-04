@@ -55,10 +55,26 @@ public class JobResource {
     }
 
     @GET
+    @Path("/viewBandLevelNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Band> getBandNames() throws SQLException {
+        List<Band> bands = bandLevel.getBandNames();
+        return bands;
+    }
+
+    @GET
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Capability> getCapabilities() throws SQLException {
         List<Capability> capabilities = capabilityLevel.getCapabilities();
+        return capabilities;
+    }
+
+    @GET
+    @Path("/viewCapabilitiesNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Capability> getCapabilitiesNames() throws SQLException {
+        List<Capability> capabilities = capabilityLevel.getCapabilitiesNames();
         return capabilities;
     }
 }

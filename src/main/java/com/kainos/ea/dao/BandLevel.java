@@ -36,4 +36,27 @@ public class BandLevel {
         }
         return baseList;
     }
+
+    public List<Band> getBandNames() throws SQLException{
+        List<Band> baseList = new ArrayList();
+        ResultSet resultSet = null;
+
+        try{
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
+            Statement st = myConnection.createStatement();
+            resultSet = st.executeQuery("SELECT DISTINCT * FROM band;");
+
+            while (resultSet.next()) {
+                Band dataBaseBand = Band.builder()
+                        .bandID(resultSet.getInt("bandID"))
+                        .bandName(resultSet.getString("bandName"))
+                        .build();
+                baseList.add(dataBaseBand);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return baseList;
+    }
 }

@@ -12,6 +12,7 @@ import lombok.ToString;
 @Builder
 @Getter
 public class Band {
+    private int bandID;
     private String bandName;
     private String roleName;
 }
