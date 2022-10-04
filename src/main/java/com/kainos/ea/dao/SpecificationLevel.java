@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class SpecificationLevel {
     public static JobRole getJobRole(int jobRoleId) throws SQLException {
         JobRole jobRole = null;
-
+      
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();

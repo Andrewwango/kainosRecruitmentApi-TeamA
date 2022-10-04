@@ -19,6 +19,8 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private static Connection conn;
     private JobRoleLevel jobRoleLevel;
     private BandLevel bandLevel;
+    private CapabilityLevel capabilityLevel;
+    private SpecificationLevel specificationLevel;
 
     private CapabilityLevel capabilityLevel;
 
@@ -50,7 +52,9 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         bandLevel = new BandLevel();
         capabilityLevel = new CapabilityLevel();
         specificationLevel = new SpecificationLevel();
-        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel,capabilityLevel,specificationLevel));
+      
+        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel, capabilityLevel, specificationLevel));
+      
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection con = dataBaseConnection.getConnection();
