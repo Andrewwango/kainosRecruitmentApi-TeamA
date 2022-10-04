@@ -185,3 +185,29 @@ class GenderBiasScorer:
         tokens = document_to_tokens(document)
         scores = self.score_tokens_binary(tokens, thresh=thresh)
         return tokens, scores
+
+class EnsembleGenderBiasScorer(GenderBiasScorer):
+    def __init__(self, wvs, threshs, **kwargs):
+        self.wvs = wvs
+        self.threshs = threshs
+        self.scorers = [GenderBiasScorer(wv, **kwargs) for wv in wvs]
+    
+    def score_tokens(self, tokens: list) -> list:
+        raise NotImplementedError
+
+    def score_token(self, token: str) -> float:
+        raise NotImplementedError
+
+    def _mode(self, x):
+        return max(set(x), key=x.count)
+
+    def score_token_binary(self, token: str, thresh=0) -> int:
+        del thresh #just here for consistency
+        scores = [scorer.score_token_binary(token, thresh=thresh) for scorer,thresh in zip(self.scorers, self.threshs)]
+        if sum(scores) == 0:
+            score = 0
+        else:
+            score = self._mode(scores)
+        print(scores, score)
+        return score
+
