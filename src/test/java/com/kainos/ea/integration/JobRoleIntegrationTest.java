@@ -24,9 +24,9 @@ public class JobRoleIntegrationTest {
     @Test
     void getSpecification_shouldReturnSpecificationOfJobRole() {
         int id = 1;
-        String response = APP.client().target("http://localhost:8080/api/job-specification/" + id)
+        JobRole response = APP.client().target("http://localhost:8080/api/job-specification/" + id)
                 .request()
-                .get(JobRole.class).getSpecification();
+                .get(JobRole.class);
 
         Assertions.assertTrue(response != null);
     }
