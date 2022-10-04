@@ -1,11 +1,9 @@
 package com.kainos.ea.resource;
 
-import com.kainos.ea.dao.BandLevel;
-import com.kainos.ea.dao.CapabilityLevel;
-import com.kainos.ea.dao.JobRoleLevel;
-import com.kainos.ea.dao.SpecificationLevel;
+import com.kainos.ea.dao.*;
 import com.kainos.ea.models.Band;
 import com.kainos.ea.models.Capability;
+import com.kainos.ea.models.Competencies;
 import io.swagger.annotations.Api;
 import com.kainos.ea.models.JobRole;
 import javax.ws.rs.*;
@@ -22,11 +20,14 @@ public class JobResource {
     private BandLevel bandLevel;
     private CapabilityLevel capabilityLevel;
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel) {
+    private CompetenciesLevel competenciesLevel;
+
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
         this.specificationLevel = specificationLevel;
+        this.competenciesLevel = competenciesLevel;
     }
 
     @GET
@@ -60,5 +61,13 @@ public class JobResource {
     public List<Capability> getCapabilities() throws SQLException {
         List<Capability> capabilities = capabilityLevel.getCapabilities();
         return capabilities;
+    }
+
+    @GET
+    @Path("/viewCompetencies/{bandID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Competencies> getCompetencies(@PathParam("bandID") int bandID) throws SQLException {
+        List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
+        return competencies;
     }
 }
