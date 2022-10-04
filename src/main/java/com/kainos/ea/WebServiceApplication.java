@@ -1,7 +1,7 @@
 package com.kainos.ea;
 
 import com.kainos.ea.dao.*;
-import com.kainos.ea.test.utils.DataBaseConnection;
+import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.resource.JobResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;

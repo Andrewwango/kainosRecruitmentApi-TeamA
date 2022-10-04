@@ -2,7 +2,7 @@ package com.kainos.ea.dao;
 
 import com.kainos.ea.models.Competencies;
 import com.kainos.ea.models.JobRole;
-import com.kainos.ea.test.utils.DataBaseConnection;
+import com.kainos.ea.utils.DataBaseConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
