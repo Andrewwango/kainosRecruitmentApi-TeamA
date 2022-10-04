@@ -22,10 +22,6 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private CapabilityLevel capabilityLevel;
     private SpecificationLevel specificationLevel;
 
-    private CapabilityLevel capabilityLevel;
-
-    private SpecificationLevel specificationLevel;
-
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
     }

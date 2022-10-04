@@ -29,13 +29,6 @@ public class JobResource {
         this.specificationLevel = specificationLevel;
     }
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel) {
-        this.jobRoleLevel = jobRoleLevel;
-        this.bandLevel = bandLevel;
-        this.capabilityLevel = capabilityLevel;
-        this.specificationLevel = specificationLevel;
-    }
-
     @GET
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
