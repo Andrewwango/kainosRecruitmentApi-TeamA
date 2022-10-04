@@ -1,6 +1,8 @@
-package com.kainos.ea;
+package com.kainos.ea.integration;
 
-import com.kainos.ea.models.Capability;
+import com.kainos.ea.WebServiceApplication;
+import com.kainos.ea.WebServiceConfiguration;
+import com.kainos.ea.models.Training;
 import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
@@ -10,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.List;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
-class CapabilityIntegrationTest {
+class TrainingIntegrationTest {
 
     static final DropwizardAppExtension<WebServiceConfiguration> APP = new DropwizardAppExtension<>(
             WebServiceApplication.class, null,
@@ -18,8 +20,8 @@ class CapabilityIntegrationTest {
     );
 
     @Test
-    void getCapabilities_shouldReturnListOfCapabilities() {
-        List<Capability> response = APP.client().target("http://localhost:8080/api/viewCapabilities")
+    void getTraining_shouldReturnListOfTraining() {
+        List<Training> response = APP.client().target("http://localhost:8080/api/view-band-training/4")
                 .request()
                 .get(List.class);
 
