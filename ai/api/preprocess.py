@@ -143,7 +143,7 @@ def document_to_tokens(document: str, use_textblob=True, return_textblob=False) 
         tokens = simple_preprocess(document)
         tokens_filtered = remove_stopword_tokens(tokens, stopwords=STOPWORDS)
     
-    return tokens_filtered, blob if use_textblob and return_textblob else tokens_filtered
+    return (tokens_filtered, blob) if use_textblob and return_textblob else tokens_filtered
 
 class TrainingCorpus:
     """Class representing input training corpus for training word2vec models. Wraps an iterable to read corpus (1 line = 1 document), and tokenize each line.
