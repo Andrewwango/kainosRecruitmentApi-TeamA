@@ -5,20 +5,15 @@ import gensim.downloader as gensim_downloader
 from api import EnsembleGenderBiasScorer, percentage_bias, biased_words, score_document_sentiment_subjectivity
 
 ensemble_scorer = None
+model_base = "/opt/ml" #"models"
 
-def init():
-    global ensemble_scorer
+wv_pretrained = KeyedVectors.load_word2vec_format(f"{model_base}/word2vec-google-news-300.gz", binary=True)
+wv_wikibios = Word2Vec.load(f"{model_base}/dataset_wikibios_merged.pt").wv
+wv_bug = Word2Vec.load(f"{model_base}/dataset_bug.pt").wv
 
-    # wv_pretrained = gensim_downloader.load('word2vec-google-news-300')
-    # The following requires moving the model from download path (get with gensim.downloader.load('word2vec-google-news-300', return_path=True)) into models folder.
-    wv_pretrained = KeyedVectors.load_word2vec_format("models/word2vec-google-news-300.gz", binary=True)
-    wv_wikibios = Word2Vec.load(f"models/dataset_wikibios_merged.pt").wv
-    wv_bug = Word2Vec.load(f"models/dataset_bug.pt").wv
-
-    ensemble_scorer = EnsembleGenderBiasScorer(wvs=[wv_wikibios, wv_bug, wv_pretrained],
-                                               threshs=[0.4, 0.8, 0.13]
-                                               )
-
+ensemble_scorer = EnsembleGenderBiasScorer(wvs=[wv_wikibios, wv_bug, wv_pretrained],
+                                            threshs=[0.4, 0.8, 0.13]
+                                            )
 
 def post_gender_bias(document: str):
     tokens, scores = ensemble_scorer.score_document(document)
@@ -33,7 +28,6 @@ def post_gender_bias(document: str):
         }
     })
 
-
 def post_sentiment(document: str):
     result = score_document_sentiment_subjectivity(document)
     sentiment, subjectivity = result["sentiment"], result["subjectivity"]
@@ -42,3 +36,11 @@ def post_sentiment(document: str):
         "sentiment": sentiment,
         "subjectivity": subjectivity
     })
+
+def lambda_handler(event, context):
+    document = event['body'].encode('utf-8')
+    result = post_gender_bias(document)
+    return {
+        'statusCode': 200,
+        'body': result
+    }
