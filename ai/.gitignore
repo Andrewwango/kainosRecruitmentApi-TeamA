@@ -2,6 +2,7 @@
 *.sent
 *.txt
 !requirements.txt
+!data/eval/kainosspecs.txt
 *.npy
 *.pt
 

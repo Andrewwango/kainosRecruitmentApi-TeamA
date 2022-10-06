@@ -45,7 +45,7 @@ def percentage_bias(document: str, scores: list) -> float:
     Returns:
         float: percentage of bias words
     """
-    return np.sum(np.abs(scores)) / document_length(document)
+    return np.sum(np.abs(scores)) / document_length(document) * 100
 
 def biased_words(tokens: list, scores: list) -> dict:
     """Return detected biased words
@@ -66,7 +66,7 @@ def biased_words(tokens: list, scores: list) -> dict:
 class GenderBiasScorer:
     """Class for calculating gender bias score for words and documents using a word vocabulary trained using word2vec
     """
-    def __init__(self, wv: KeyedVectors, group_m=None, group_f=None, metric="cosine", group_reduce="max"):
+    def __init__(self, wv: KeyedVectors, group_m=None, group_f=None, metric="cosine", group_reduce="max", verbose=False):
         """Initialise gender bias scoring for given model
 
         Args:
@@ -77,6 +77,7 @@ class GenderBiasScorer:
             group_reduce (str, optional): how to calculate difference between similarities to either gender bias group, choose from ["max", "mean"].
                 If "max", choose best absolute difference between similarities of input word and either bias group words. If "mean", choose
                 mean difference, which boils down to calculating similarities of input word and group means (mathematically bit iffy).  Defaults to "max".
+            verbose (bool, optional): print when words missing from vocabulary. Defaults to False.
 
         Raises:
             ValueError: metric not in ["cosine", "euclidean"]
@@ -85,6 +86,7 @@ class GenderBiasScorer:
         self.wv = wv
         self.group_m = ["male", "man", "he", "his", "masculine", "men"]       if group_m is None else group_m
         self.group_f = ["female", "woman", "she", "her", "feminine", "women"] if group_f is None else group_f
+        self.verbose = verbose
         
         assert(len(self.group_m) == len(self.group_f))
 
@@ -96,7 +98,7 @@ class GenderBiasScorer:
                 _ = self.wv[m]
                 _ = self.wv[f]
             except KeyError:
-                print(f"Bias group words {m}, {f} not found in model vocabulary")
+                if self.verbose: print(f"Bias group words {m}, {f} not found in model vocabulary")
                 continue
 
             self.group_m_vecs.append(self.wv[m])
@@ -147,7 +149,7 @@ class GenderBiasScorer:
             similarities_f = self.metric(self.wv[token], self.group_f_vecs)
             similarities_diff = similarities_m - similarities_f
         except KeyError:
-            print(f"Tokens {token} not found in model vocabulary")
+            if self.verbose: print(f"Tokens {token} not found in model vocabulary")
             similarities_diff = np.zeros(len(self.group_m))
 
         return self.group_reduce(similarities_diff)
