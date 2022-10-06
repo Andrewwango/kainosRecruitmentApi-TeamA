@@ -39,6 +39,15 @@ public class JobResource {
     }
 
     @GET
+    @Path("/job-roles-by-capability/{capabilityId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<JobRole> getJobRolesByCapability(@PathParam("capabilityId") int capabilityID)
+            throws SQLException {
+        List<JobRole> jobRoles = jobRoleLevel.getJobRolesByCapability(capabilityID);
+        return jobRoles;
+    }
+
+    @GET
     @Path("/job-specification/{jobRoleId}")
     @Produces(MediaType.APPLICATION_JSON)
     public JobRole getJobRole(@PathParam("jobRoleId") int jobRoleId) throws SQLException {
