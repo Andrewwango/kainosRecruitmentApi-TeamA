@@ -1,6 +1,7 @@
 *.csv
 *.sent
 *.txt
+!requirements.txt
 *.npy
 *.pt
 
