@@ -115,18 +115,25 @@ def document_length(document: str) -> int:
     tokens = simple_preprocess(document)
     return len(tokens)
 
-def document_to_tokens(document: str, use_textblob=True) -> list:
+def document_to_tokens(document: str, use_textblob=True, return_textblob=False) -> list:
     """Tokenise and preprocess raw document string. Preprocess includes lemmatization (only if use_textblob==True, 
         stopword removal, lower case, length filter, regex match to remove punctuation and remove numbers.)
 
     Args:
         document (str): input document string on one line.
         use_textblob (bool, optional): method to tokenise and preprocess document. If True, use textblob tokenization: this
-        also includes textblob lemmatization (but is slower). If False, use gensim simple preprocess (no lemmatization). All 
-        other functionality is common to both methods. Defaults to True.
+            also includes textblob lemmatization (but is slower). If False, use gensim simple preprocess (no lemmatization). All 
+            other functionality is common to both methods. Defaults to True.
+        return_textblob (bool, optional): whether to return the blob created during tokenization when use_textblob==True.
+            Defaults to False.
 
     Returns:
-        list: tokens from document tokenization
+        if return_textblob==True and use_textblob==True:
+            list: tokens from document tokenization
+            textblob.TextBlob: blob of the document from document tokenization
+        else:
+            list: tokens from document tokenization
+
     """
     if use_textblob:
         blob = TextBlob(document)
@@ -136,7 +143,7 @@ def document_to_tokens(document: str, use_textblob=True) -> list:
         tokens = simple_preprocess(document)
         tokens_filtered = remove_stopword_tokens(tokens, stopwords=STOPWORDS)
     
-    return tokens_filtered
+    return tokens_filtered, blob if use_textblob and return_textblob else tokens_filtered
 
 class TrainingCorpus:
     """Class representing input training corpus for training word2vec models. Wraps an iterable to read corpus (1 line = 1 document), and tokenize each line.
