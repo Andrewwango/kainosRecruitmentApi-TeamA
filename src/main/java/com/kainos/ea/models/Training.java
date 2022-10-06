@@ -11,8 +11,11 @@ import lombok.ToString;
 @ToString
 @Builder
 @Getter
-public class Band {
-    private int bandID;
+public class Training {
     private String bandName;
-    private String roleName;
+    private String trainingName;
+    private String trainingDate;
+    private String durationHours;
+    private String registration;
+    private String category;
 }

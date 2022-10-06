@@ -11,8 +11,7 @@ import lombok.ToString;
 @ToString
 @Builder
 @Getter
-public class Band {
-    private int bandID;
-    private String bandName;
-    private String roleName;
+public class Competencies {
+    private String category;
+    private String description;
 }
