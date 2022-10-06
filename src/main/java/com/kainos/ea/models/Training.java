@@ -17,4 +17,5 @@ public class Training {
     private String trainingDate;
     private String durationHours;
     private String registration;
+    private String category;
 }

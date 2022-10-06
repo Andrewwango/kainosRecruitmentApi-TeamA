@@ -20,7 +20,7 @@ public class TrainingLevel {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("SELECT bandName, bandTrainings.trainingName, trainingDate, durationHours, registration " +
+            resultSet = st.executeQuery("SELECT bandName, bandTrainings.trainingName, trainingDate, durationHours, registration, category " +
                     "FROM band JOIN bandTrainings JOIN trainings WHERE band.bandID=bandTrainings.bandID AND" +
                     " bandTrainings.trainingName=trainings.trainingName AND bandTrainings.bandID = " + bandID);
 
@@ -31,6 +31,7 @@ public class TrainingLevel {
                         .trainingDate(resultSet.getString("trainingDate"))
                         .durationHours(resultSet.getString("durationHours"))
                         .registration(resultSet.getString("registration"))
+                        .category(resultSet.getString("category"))
                         .build();
 
                 trainingList.add(training);
