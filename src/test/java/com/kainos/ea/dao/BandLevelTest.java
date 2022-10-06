@@ -16,10 +16,9 @@ import static org.junit.Assert.assertThrows;
 
 public class BandLevelTest {
     DataBaseConnection dataBaseConnector = Mockito.mock(DataBaseConnection.class);
-
     BandLevel bandLevel = Mockito.mock(BandLevel.class);
-
     Connection myConnection;
+    private BandLevel bandLevelField;
 
     @Test
     public void getBandLevelFromDatabaseShouldReturnValuesAsDatabaseConnectionIsOk() throws SQLException {
@@ -42,17 +41,22 @@ public class BandLevelTest {
     }
 
     @Test
-    void capabilityLevel_ReturnsListOfBandNames_WhenCalledGetBandNames() throws SQLException {
-        //Given
-        bandLevel = new BandLevel();
-        List<Band> result = new ArrayList<>();
+    public void getBandLevelNamesFromDatabaseShouldReturnValuesAsDatabaseConnectionIsOk() throws SQLException {
+        List<Band> expectedResult = new ArrayList();
+        Mockito.when(bandLevel.getBandNames()).thenReturn(expectedResult);
+        List<Band> result = bandLevel.getBandNames();
 
-        //When
-        result = bandLevel.getBandNames();
+        assertEquals(expectedResult,result);
 
-        //Then
-        assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(6);
-        assertThat(result).hasAtLeastOneElementOfType(Band.class);
+    }
+
+    @Test
+    public void getBandLevelNamesFromDatabaseShouldThrowSQLException() throws SQLException {
+        Mockito.when(dataBaseConnector.getConnection()).thenReturn(myConnection);
+        Mockito.when(bandLevel.getBandNames()).thenThrow(SQLException.class);
+
+        assertThrows(SQLException.class,
+                () -> bandLevel.getBandNames());
+
     }
 }

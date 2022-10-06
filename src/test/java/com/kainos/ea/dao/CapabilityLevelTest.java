@@ -38,17 +38,21 @@ class CapabilityLevelTest {
     }
 
     @Test
-    void capabilityLevel_ReturnsListOfCapabilityNames_WhenCalledGetCapabilitiesNames() throws SQLException {
-        //Given
-        capabilityLevel = new CapabilityLevel();
-        List<Capability> result;
+    void getCapabilitiesNames_shouldReturnAList() throws SQLException {
+        List<Capability> expectedResult = new ArrayList<>();
+        Mockito.when(databaseConnector.getConnection()).thenReturn(conn);
+        Mockito.when(cap.getCapabilitiesNames()).thenReturn(expectedResult);
 
-        //When
-        result = capabilityLevel.getCapabilitiesNames();
+        List<Capability> result = cap.getCapabilitiesNames();
 
-        //Then
-        assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(2);
-        assertThat(result).hasAtLeastOneElementOfType(Capability.class);
+        assertEquals(result, expectedResult);
+    }
+    @Test
+    void getCapabilitiesNames_shouldThrowSQLException_whenProvoked() throws SQLException {
+        Mockito.when(databaseConnector.getConnection()).thenReturn(conn);
+        Mockito.when(cap.getCapabilitiesNames()).thenThrow(SQLException.class);
+
+        assertThrows(SQLException.class,
+                () -> cap.getCapabilitiesNames());
     }
 }
