@@ -73,7 +73,6 @@ public class JobResource {
         return training;
     }
 
-
     @GET
     @Path("/viewCompetencies/{bandID}")
     @Produces(MediaType.APPLICATION_JSON)
