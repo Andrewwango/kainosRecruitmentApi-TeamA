@@ -9,9 +9,7 @@ import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class JobRoleIntegrationTest {
@@ -29,5 +27,16 @@ public class JobRoleIntegrationTest {
                 .get(JobRole.class);
 
         Assertions.assertTrue(response != null);
+    }
+
+    @Test
+    void getJobRolesByCapability_shouldReturnListOfJobRolesByCapability() {
+        int capabilityId = 1;
+        List<JobRole> response = APP.client().target("http://localhost:8080/api/job-roles-by-capability/" + capabilityId)
+                .request()
+                .get(List.class);
+
+        Assertions.assertTrue(response.size() > 0);
+
     }
 }

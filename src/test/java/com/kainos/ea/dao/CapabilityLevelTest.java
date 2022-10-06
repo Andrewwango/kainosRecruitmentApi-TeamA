@@ -1,6 +1,5 @@
 package com.kainos.ea.dao;
 
-import com.kainos.ea.exception.DatabaseConnectionException;
 import com.kainos.ea.models.Capability;
 import com.kainos.ea.utils.DataBaseConnection;
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CapabilityLevelTest {
@@ -34,5 +35,20 @@ class CapabilityLevelTest {
 
         assertThrows(SQLException.class,
                 () -> cap.getCapabilities());
+    }
+
+    @Test
+    void capabilityLevel_ReturnsListOfCapabilityNames_WhenCalledGetCapabilitiesNames() throws SQLException {
+        //Given
+        capabilityLevel = new CapabilityLevel();
+        List<Capability> result;
+
+        //When
+        result = capabilityLevel.getCapabilitiesNames();
+
+        //Then
+        assertThat(result).isNotNull();
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).hasAtLeastOneElementOfType(Capability.class);
     }
 }

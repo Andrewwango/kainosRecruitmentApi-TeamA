@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
@@ -38,5 +39,20 @@ public class BandLevelTest {
         assertThrows(SQLException.class,
                 () -> bandLevel.getBand());
 
+    }
+
+    @Test
+    void capabilityLevel_ReturnsListOfBandNames_WhenCalledGetBandNames() throws SQLException {
+        //Given
+        bandLevel = new BandLevel();
+        List<Band> result = new ArrayList<>();
+
+        //When
+        result = bandLevel.getBandNames();
+
+        //Then
+        assertThat(result).isNotNull();
+        assertThat(result.size()).isEqualTo(6);
+        assertThat(result).hasAtLeastOneElementOfType(Band.class);
     }
 }
