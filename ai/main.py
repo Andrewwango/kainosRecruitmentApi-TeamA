@@ -1,5 +1,6 @@
 import json
 from gensim.models import Word2Vec
+from gensim.models import KeyedVectors
 import gensim.downloader as gensim_downloader
 from api import EnsembleGenderBiasScorer, percentage_bias, biased_words, score_document_sentiment_subjectivity
 
@@ -8,7 +9,8 @@ ensemble_scorer = None
 def init():
     global ensemble_scorer
 
-    wv_pretrained = gensim_downloader.load('word2vec-google-news-300')
+    # wv_pretrained = gensim_downloader.load('word2vec-google-news-300')
+    wv_pretrained = KeyedVectors.load_word2vec_format("models/word2vec-google-news-300.gz", binary=True)
     wv_wikibios = Word2Vec.load(f"models/dataset_wikibios_merged.pt").wv
     wv_bug = Word2Vec.load(f"models/dataset_bug.pt").wv
 
