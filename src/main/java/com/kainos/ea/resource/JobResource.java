@@ -88,6 +88,8 @@ public class JobResource {
     public List<Capability> getCapabilitiesNames() throws SQLException {
         List<Capability> capabilities = capabilityLevel.getCapabilitiesNames();
         return capabilities;
+    }
+
     @GET
     @Path("/view-band-training/{bandID}")
     @Produces(MediaType.APPLICATION_JSON)
