@@ -63,7 +63,7 @@ def token_filter(token: str, tag: str, stopwords=STOPWORDS, min_len=2, max_len=1
     """
     return token is not None and tag not in ("CD",) and token not in stopwords and min_len <= len(token) <= max_len
 
-def token_regex(token: str, regex=PAT_ALPHABETIC) -> str | None:
+def token_regex(token: str, regex=PAT_ALPHABETIC) -> str:
     """Apply regex to token
 
     Args:
