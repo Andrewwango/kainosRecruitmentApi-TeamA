@@ -1,12 +1,9 @@
 package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.*;
-import com.kainos.ea.models.Band;
-import com.kainos.ea.models.Capability;
-import com.kainos.ea.models.Competencies;
-import com.kainos.ea.models.Training;
+import com.kainos.ea.models.*;
 import io.swagger.annotations.Api;
-import com.kainos.ea.models.JobRole;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -69,8 +66,8 @@ public class JobResource {
     @GET
     @Path("/viewBandLevelNames")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Band> getBandNames() throws SQLException {
-        List<Band> bands = bandLevel.getBandNames();
+    public List<BandName> getBandNames() throws SQLException {
+        List<BandName> bands = bandLevel.getBandNames();
         return bands;
     }
 
