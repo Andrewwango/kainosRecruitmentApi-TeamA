@@ -17,8 +17,7 @@ public class BandTest {
 
     @Test
     public void checkBandObjectSetterMethodsWork(){
-        Band band = new Band(1,"Consultant","Workday Consultant");
-        band.setBandID(1);
+        Band band = new Band(1, "Consultant","Workday Consultant");
         band.setBandName("Associate");
         band.setRoleName("Workday Associate");
 

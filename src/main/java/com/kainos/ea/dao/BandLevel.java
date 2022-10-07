@@ -22,10 +22,11 @@ public class BandLevel {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection myConnection = dataBaseConnection.getConnection();
             Statement st = myConnection.createStatement();
-            resultSet = st.executeQuery("SELECT roleName, bandName FROM jobRoles JOIN band WHERE jobRoles.bandID = band.bandID;");
+            resultSet = st.executeQuery("SELECT jobRoles.bandID, roleName, bandName FROM jobRoles JOIN band WHERE jobRoles.bandID = band.bandID;");
 
             while (resultSet.next()) {
                Band dataBaseBand = Band.builder()
+                       .bandID(resultSet.getInt("bandID"))
                    .bandName(resultSet.getString("bandName"))
                    .roleName(resultSet.getString("roleName"))
                    .build();
