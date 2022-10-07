@@ -149,7 +149,7 @@ class TrainingCorpus:
     """Class representing input training corpus for training word2vec models. Wraps an iterable to read corpus (1 line = 1 document), and tokenize each line.
         Includes functionality to perform tokenization offline before training to save time.
     """
-    def __init__(self, corpus: str, tokenize_before_training=False, use_textblob=True, base_fn="/Users/andrew.wang/Documents/academy/project/kainosRecruitmentApi-TeamA/ai/data/corpus"):
+    def __init__(self, corpus: str, tokenize_before_training=False, use_textblob=True, base_fn="data/corpus"):
         """Initialise training corpus.
 
         Args:
@@ -157,7 +157,7 @@ class TrainingCorpus:
             tokenize_before_training (bool, optional): perform tokenization offline before training. Make sure to set this as True if tokenization is expensive.
             If True, tokens are saved in npy format after tokenization so tokenization doesn't need to be performed again. Defaults to False.
             use_textblob (bool, optional): whether tokenization should use textblob (includes lemmatization but is expensive). Defaults to True.
-            base_fn (str, optional): data/corpus folder. Defaults to "/Users/andrew.wang/Documents/academy/project/kainosRecruitmentApi-TeamA/ai/data/corpus".
+            base_fn (str, optional): data/corpus folder. Defaults to "data/corpus".
         
         Raises:
             FileNotFoundError: corpus file not found in data/corpus folder.
@@ -184,6 +184,6 @@ class TrainingCorpus:
             for tokens in self.corpus_tokens:
                 yield tokens
         else:
-            for document in open(datapath(self.fn)):
+            for document in open(self.fn):
                 tokens = document_to_tokens(document, use_textblob=self.use_textblob)
                 yield tokens
