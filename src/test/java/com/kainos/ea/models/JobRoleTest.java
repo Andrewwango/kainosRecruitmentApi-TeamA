@@ -16,6 +16,7 @@ public class JobRoleTest {
         .link("https://linktospec")
         .bandID(5455)
         .capabilityID(123445)
+        .responsibility("Working in teams")
         .build();
 
     assertEquals(2000, jobRole.getJobRoleId());
@@ -24,5 +25,6 @@ public class JobRoleTest {
     assertEquals("https://linktospec", jobRole.getLink());
     assertEquals(5455, jobRole.getBandID());
     assertEquals(123445, jobRole.getCapabilityID());
+    assertEquals("Working in teams", jobRole.getResponsibility());
   }
 }
