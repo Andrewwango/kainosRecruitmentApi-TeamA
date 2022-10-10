@@ -1,5 +1,13 @@
 """
 Handle Lambda function invocation and get gender bias prediction of text
+Deployment notes:
+- CloudFormation Stack creates S3 bucket, Lambda function, API Gateway
+- Lambda function is built from Docker image stored in ECR
+- API Gateway timeout is 29s. We don't want to exceed this, however loading Google news model
+takes > 1 minute, so cold started Lambda called via API will fail (504 Gateway timeout).
+Solution: use Cloudwatch scheduler rule to keep function warm. Before starting, kickstart
+function directly using test event call from Lambda. 
+- We deploy to eu-west-2, and all resources have prefix academy22-gender-bias-prediction
 """
 import json
 from gensim.models import Word2Vec, KeyedVectors
