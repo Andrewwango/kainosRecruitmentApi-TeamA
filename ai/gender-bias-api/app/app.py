@@ -5,6 +5,7 @@ import json
 from gensim.models import Word2Vec, KeyedVectors
 from api import EnsembleGenderBiasScorer, percentage_bias, biased_words, score_document_sentiment_subjectivity
 
+
 print("Loading models...")
 # Load models from folder created in Dockerfile
 model_base = "/opt/ml"
@@ -17,6 +18,7 @@ ensemble_scorer = EnsembleGenderBiasScorer(wvs=[wv_wikibios, wv_bug, wv_pretrain
                                             threshs=[0.4, 0.8, 0.13]
                                             )
 print("Scorer created.")
+
 
 def post_gender_bias(document: str) -> dict:
     tokens, scores = ensemble_scorer.score_document(document)

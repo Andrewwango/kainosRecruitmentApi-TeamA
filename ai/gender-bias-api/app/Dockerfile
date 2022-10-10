@@ -4,6 +4,7 @@ COPY app.py ./
 COPY requirements.txt ./
 COPY api ./api/
 COPY models/* /opt/ml/
+# RUN curl -L https://github.com/RaRe-Technologies/gensim-data/releases/download/word2vec-google-news-300/word2vec-google-news-300.gz -o /opt/ml/word2vec-google-news-300.gz
 
 RUN python3.9 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt -t .
 RUN mkdir -p /var/lang/nltk_data
