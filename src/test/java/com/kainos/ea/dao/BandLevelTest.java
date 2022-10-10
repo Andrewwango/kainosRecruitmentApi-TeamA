@@ -45,18 +45,14 @@ public class BandLevelTest {
         List<Band> expectedResult = new ArrayList();
         Mockito.when(bandLevel.getBandNames()).thenReturn(expectedResult);
         List<Band> result = bandLevel.getBandNames();
-
         assertEquals(expectedResult,result);
-
     }
 
     @Test
     public void getBandLevelNamesFromDatabaseShouldThrowSQLException() throws SQLException {
         Mockito.when(dataBaseConnector.getConnection()).thenReturn(myConnection);
         Mockito.when(bandLevel.getBandNames()).thenThrow(SQLException.class);
-
         assertThrows(SQLException.class,
                 () -> bandLevel.getBandNames());
-
     }
 }
