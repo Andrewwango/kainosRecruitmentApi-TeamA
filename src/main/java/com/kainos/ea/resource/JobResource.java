@@ -1,12 +1,9 @@
 package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.*;
-import com.kainos.ea.models.Band;
-import com.kainos.ea.models.Capability;
-import com.kainos.ea.models.Competencies;
-import com.kainos.ea.models.Training;
+import com.kainos.ea.models.*;
 import io.swagger.annotations.Api;
-import com.kainos.ea.models.JobRole;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -80,4 +77,13 @@ public class JobResource {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
     }
+    @POST
+    @Path("/gender-bias")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String postGenderBias(String request) {
+
+        return null;
+    }
+
 }
