@@ -12,6 +12,7 @@ import lombok.ToString;
 @Builder
 @Getter
 public class Capability {
+    private int capabilityID;
     private String capabilityName;
     private String roleName;
 }

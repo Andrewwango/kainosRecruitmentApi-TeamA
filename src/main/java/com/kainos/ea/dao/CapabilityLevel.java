@@ -36,4 +36,29 @@ public class CapabilityLevel {
         }
         return capList;
     }
+
+    public List<Capability> getCapabilitiesNames() throws SQLException{
+
+        List<Capability> capList = new ArrayList();
+        ResultSet resultSet = null;
+
+        try{
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
+            Statement st = myConnection.createStatement();
+            resultSet = st.executeQuery("SELECT DISTINCT * FROM capabilities;");
+
+            while (resultSet.next()) {
+                Capability cap = Capability.builder()
+                        .capabilityID(resultSet.getInt("capabilityID"))
+                        .capabilityName(resultSet.getString("capabilityName"))
+                        .build();
+
+                capList.add(cap);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return capList;
+    }
 }

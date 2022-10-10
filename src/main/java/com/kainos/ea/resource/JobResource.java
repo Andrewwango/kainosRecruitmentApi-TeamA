@@ -42,6 +42,15 @@ public class JobResource {
     }
 
     @GET
+    @Path("/job-roles-by-capability/{capabilityId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<JobRole> getJobRolesByCapability(@PathParam("capabilityId") int capabilityID)
+            throws SQLException {
+        List<JobRole> jobRoles = jobRoleLevel.getJobRolesByCapability(capabilityID);
+        return jobRoles;
+    }
+
+    @GET
     @Path("/job-specification/{jobRoleId}")
     @Produces(MediaType.APPLICATION_JSON)
     public JobRole getJobRole(@PathParam("jobRoleId") int jobRoleId) throws SQLException {
@@ -58,10 +67,26 @@ public class JobResource {
     }
 
     @GET
+    @Path("/viewBandLevelNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Band> getBandNames() throws SQLException {
+        List<Band> bands = bandLevel.getBandNames();
+        return bands;
+    }
+
+    @GET
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Capability> getCapabilities() throws SQLException {
         List<Capability> capabilities = capabilityLevel.getCapabilities();
+        return capabilities;
+    }
+
+    @GET
+    @Path("/viewCapabilitiesNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Capability> getCapabilitiesNames() throws SQLException {
+        List<Capability> capabilities = capabilityLevel.getCapabilitiesNames();
         return capabilities;
     }
 
