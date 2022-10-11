@@ -19,14 +19,16 @@ public class JobResource {
     private CapabilityLevel capabilityLevel;
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
+    private GenderBiasLevel genderBiasLevel;
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel) {
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, GenderBiasLevel genderBiasLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
         this.specificationLevel = specificationLevel;
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
+        this.genderBiasLevel = genderBiasLevel;
     }
 
     @GET
@@ -81,9 +83,9 @@ public class JobResource {
     @Path("/gender-bias")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String postGenderBias(String request) {
-
-        return null;
+    public BiasRequest postGenderBias(String request) {
+        BiasRequest genderBias = genderBiasLevel.getGenderBias(request);
+        return genderBias;
     }
 
 }

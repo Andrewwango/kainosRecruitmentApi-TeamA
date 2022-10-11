@@ -20,6 +20,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private SpecificationLevel specificationLevel;
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
+    private GenderBiasLevel genderBiasLevel;
 
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
@@ -49,8 +50,10 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         specificationLevel = new SpecificationLevel();
         trainingLevel = new TrainingLevel();
         competenciesLevel = new CompetenciesLevel();
+        genderBiasLevel = new GenderBiasLevel();
 
-        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel));
+
+        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel, genderBiasLevel));
       
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
