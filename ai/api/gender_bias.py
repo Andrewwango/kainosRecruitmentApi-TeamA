@@ -63,6 +63,50 @@ def biased_words(tokens: list, scores: list) -> dict:
             "biased_f": t[s==-1].tolist(),
             "unbiased": t[s==0].tolist()}
 
+def score_document_sentiment_subjectivity(document: str, return_scores=False) -> dict:
+    """Sentiment and subjectivity analysis on document using TextBlob pretrained.
+    Explanation [here](https://towardsdatascience.com/the-most-favorable-pre-trained-sentiment-classifiers-in-python-9107c06442c6)
+    Return by default just labels describing sentiment polarity and subjectivity.
+
+    Args:
+        document (str): Document to be analysed (one line)
+        return_scores (bool, optional): Whether to return numerical scores as well. Defaults to False.
+
+    Returns:
+        dict: "sentiment": sentiment descriptor if return_scores==False else descriptor and numerical score.
+            Ditto with "subjectivity".
+    """
+    _, blob = document_to_tokens(document, return_textblob=True)
+    sentiment_output = blob.sentiment
+
+    if sentiment_output.polarity >= 0.666:
+        sentiment = "Very positive"
+    elif sentiment_output.polarity >= 0.333:
+        sentiment = "Positive"
+    elif sentiment_output.polarity >= -0.333:
+        sentiment = "Neutral"
+    elif sentiment_output.polarity >= -0.666:
+        sentiment = "Negative"
+    elif sentiment_output.polarity >= -1:
+        sentiment = "Very negative"
+    else:
+        sentiment = "Error occured"
+    
+    if sentiment_output.subjectivity >= 0.75:
+        subjectivity = "Subjective"
+    elif sentiment_output.subjectivity >= 0.25:
+        subjectivity = "Neutral"
+    elif sentiment_output.subjectivity >= 0:
+        subjectivity = "Objective"
+    else:
+        subjectivity = "Error occured"
+
+    if return_scores:
+        sentiment = [sentiment, sentiment_output.polarity]
+        subjectivity = [subjectivity, sentiment_output.subjectivity] 
+    
+    return {"sentiment": sentiment, "subjectivity": subjectivity}
+
 class GenderBiasScorer:
     """Class for calculating gender bias score for words and documents using a word vocabulary trained using word2vec
     """

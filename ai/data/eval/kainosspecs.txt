@@ -1,0 +1,592 @@
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As an Artificial Intelligence (AI) Engineer Manager in Kainos, you’ll be responsible for
+successful delivery of large-scale high-quality solutions that use AI and ML technologies
+that delight our customers and impact the lives of users worldwide.
+You will provide leadership and support to AI engineering teams by understanding the
+outcomes the solution is trying to achieve, the engineering implications and complexity
+surrounding you and your teams' designs and helping teams make the right decisions.
+You’ll work with senior stakeholders to agree architectural principles, strategic direction
+and functional and non-functional designs.
+As a technical leader, you will work with your colleagues to inform development of policy
+and standards, develop customer relationships, account management and share
+knowledge and mentor those around you. You’ll do this whilst advising about new
+technologies and approaches to AI/ML, with room to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Proven experience of being responsible for different sizes and shapes of production
+data delivery challenges, e.g. AI/ML service, multi-team programme, data
+platform, complex data migration.
+• Able to simplify and clearly communicate Artificial Intelligence design in
+conversation, documentation and presentations to non-engineers.
+• Experience of leading the development of machine learning models, data storage
+and data processing to support AI/ML solutions.
+• Able to prioritise their time across multiple major projects particularly when working
+to deadlines.
+• Proven track record of successful delivery with major machine learning frameworks,
+languages and NLP frameworks.
+• Proven experience of technical leadership of an AI product/software project,
+including architecture, estimation, product planning and user story/requirement
+creation.
+• Input into the development of new AI Practice offerings.
+• Understands whole solution architecture concepts and can communicate and
+negotiate these with senior stakeholders.
+• Can prioritise non-functional concerns for customers and has experience
+incorporating these into the application design.
+• Experience of improvement of process, people and use of technology.
+• Has significant hands on experience with public cloud platforms, such as AWS and
+Azure, including SaaS and PaaS offerings.
+• Experience mentoring and coaching members of your team and wider community. 
+• Can communicate effectively with C-level stakeholders.
+• Understands commercial implications of design decisions
+• We are passionate about developing people – a demonstrated ability in
+managing, coaching and developing junior members of your team and wider
+community.
+DESIRABLE:
+• Actively shares their thoughts and views on technology.
+• Has participated in technology communities.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN)
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture. 
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As an Artificial Intelligence (AI) Engineer in Kainos, you’ll be responsible for developing high
+quality solutions which integrate AI and ML technologies that delight our customers and
+impact the lives of users worldwide. You’ll do this whilst learning about new AI technologies,
+frameworks and approaches, with talented colleagues that will help you to learn, develop
+and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Experience of building and testing software applications that integrate AI services
+and include data science models.
+• Exposure to applying mathematics principles to gain insight from data.
+• Exposure to major machine learning frameworks, languages and NLP frameworks.
+• Experience of applying common design principles and patterns.
+• Experience of working on own initiative and in a collaborative team environment.
+DESIRABLE:
+• Exposure to modern version control and Continuous Delivery pipeline techniques.
+• Experience of troubleshooting issues within development and test environments.
+• Exposure to multiple programming languages including Python, using tools such as
+Numpy, Scipy & Pandas.
+• Good communication skills, with the ability to communicate issues to other
+technical people, and sometimes to non-technical people.
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As an Associate Data Scientist in Kainos, you’ll be responsible for developing high quality
+solutions that use AI and ML technologies to delight our customers and impact the lives of
+users worldwide. It’s a fast-paced environment so it is important for you to make sound,
+reasoned decisions. You’ll do this whilst learning about new technologies and approaches,
+with talented colleagues that will help you to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• A minimum of a 2.1 degree in Computer Science, Machine Learning, Data
+Science, Statistics or in a similar highly quantitative field.
+• Problem solving skills with ability to learn new business concepts and domains
+quickly.
+• Experience of developing models in Python/R.
+• Experience using machine learning libraries (e.g. scikit-learn, caret, mlr, mllib).
+• Experience in cleansing, filtering and re-factoring complex data from different
+sources (including non-traditional data sources).
+• Experience of working with Relational databases, NoSQL and various visualisation
+techniques.
+• Experience of working in a collaborative team environment.
+DESIRABLE:
+• An advanced degree in Computer Science, Machine Learning, Operational
+Research, Statistics or in a similar highly quantitative field.
+• Good communication skills, with the ability to communicate issues to other
+technical people, and sometimes to non-technical people.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN).
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Consultant Data Scientist in Kainos, you’ll be responsible for leading teams and
+developing high quality solutions that use AI and ML technologies to delight our customers
+and impact the lives of users worldwide. It’s a fast-paced environment so it is important for
+you to make sound, reasoned decisions. You’ll do this whilst learning about new
+technologies and approaches, with talented colleagues that will help you to learn,
+develop and grow. As the technical leader in the team, you will also interact with
+customers, share knowledge and mentor those around you.
+You will manage, coach and develop a small number of staff, with a focus on managing
+employee performance and assisting in their career development. You’ll also provide
+direction and leadership for your team as you solve challenging problems together.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• A minimum of a 2.1 degree in Computer Science, Machine Learning, Data
+Science, Statistics or in a similar highly quantitative field.
+• A proven ability to solve complex problems with demonstrable ability to learn new
+business concepts and domains quickly.
+• Expertise in developing models in languages including Python/R
+• Expertise using multiple open source machine learning libraries (e.g. scikit-learn,
+caret, mlr, mllib)
+• Experience developing solutions across a number of cloud platforms (AWS, Azure or
+GCP)
+• Significant experience in cleansing, filtering and re-factoring complex data from
+different sources (including non-traditional data sources).
+• Expertise of working with Relational databases, NoSQL and various visualisation
+techniques.
+• Experience in delivering AI/ML projects to production through leadership and
+mentoring of junior team members
+• Strong interpersonal skills with the ability to lead client projects and establish
+requirements in non-technical language.
+• We are passionate about developing people – a demonstrated ability in
+managing, coaching and developing junior members of your team and wider
+community.
+DESIRABLE:
+• An advanced degree in Computer Science, Machine Learning, Operational
+Research, Statistics or in a similar highly quantitative field.
+• Multiple examples of delivering data science projects and predictive solutions to
+live in an industry production environment.
+• Experience of containerisation and cloud deployment.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN)
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture. 
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Data Scientist Manager in Kainos, you’ll be responsible for successful delivery of largescale high-quality solutions that use AI and ML technologies that delight our customers
+and impact the lives of users worldwide.
+You will provide leadership and support to data science teams by understanding the
+outcomes the solution is trying to achieve, the data implications and complexity
+surrounding you and your teams' designs and helping teams make the right decisions.
+You’ll work with senior stakeholders to agree data architectural principles, strategic
+direction and functional and non-functional designs.
+As a technical leader, you will work with your colleagues to inform development of policy
+and standards, develop customer relationships, account management and share
+knowledge and mentor those around you. You’ll do this whilst advising about new
+technologies and approaches to data, with room to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Proven experience of being responsible for different sizes and shapes of production
+data delivery challenges, e.g. AI/ML service, multi-team programme, data
+platform, complex data migration.
+• Able to simplify and clearly communicate machine learning model design in
+conversation, documentation and presentations to non-data scientists.
+• Able to lead the development of machine learning models, data storage and
+data processing to support AI/ML solutions.
+• Proven experience in cleansing, filtering and re-factoring complex data from
+different sources (including non-traditional data sources).
+• Able to prioritise their time across activities particularly when working to deadlines.
+• Input into the development of new AI Practice offerings.
+• Understands whole solution architecture concepts and can communicate and
+negotiate these with senior stakeholders.
+• Can prioritise non-functional concerns for customers and has experience
+incorporating these into the application design.
+• Has a mathematics / data science background, allowing effective communication
+with and leadership of data scientists.
+• Experience of improvement of process, people and use of technology.
+• Has significant hands on experience with public cloud platforms, such as AWS and
+Azure, including SaaS and PaaS offerings.
+• Experience mentoring and coaching members of your team and wider community.
+• Can communicate effectively with C-level stakeholders.
+• Understands commercial implications of design decisions
+• We are passionate about developing people – a demonstrated ability in
+managing, coaching and developing junior members of your team and wider
+community.
+DESIRABLE:
+• Actively shares their thoughts and views on technology.
+• Has participated in technology communities.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN)
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture. 
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Lead Artificial Intelligence (AI) Engineer in Kainos, you’ll be responsible for leading
+teams and developing high quality AI and ML solutions which delight our customers and
+impact the lives of users worldwide. It’s a fast-paced environment so it is important for you
+to make sound, reasoned decisions. You’ll do this whilst learning about new technologies
+and approaches, with talented colleagues that will help you to learn, develop and grow.
+As the technical leader in the team, you will also lead projects, interact with customers,
+share knowledge, provide thought leadership and mentor those around you.
+You will manage, coach and develop a small number of staff, with a focus on managing
+employee performance and assisting in their career development. You’ll also provide
+direction and leadership for your team as you solve challenging problems together.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Extensive expertise in designing, building, testing and maintaining production
+software applications that integrate AI services and include data science models.
+• Highly proficient in applying mathematics principles to gain insight from data.
+• Technical leadership of teams building and testing modern, scalable, secure,
+performant applications, which integrate AI and Machine Learning technologies, in
+line with industry software development principles, practices and patterns.
+• Experience of technical ownership for an AI product/software project, including
+architecture, estimation, product planning and user story/requirement creation.
+• Expertise in software design and development across all layers of an application
+• Mentoring and coaching members of your team and wider community.
+• Experience with major machine learning frameworks, languages and NLP
+frameworks.
+• We are passionate about developing people – a demonstrated ability in
+managing, coaching and developing junior members of your team and wider
+community.
+DESIRABLE:
+• Good communication skills, able to communicate issues to technical and nontechnical people.
+• Active participation in knowledge sharing activities, within the team, at a wider AI
+Practice level and externally where appropriate.
+• Experience in cleansing, filtering and re-factoring complex data from different
+sources.
+• Experience of debugging and troubleshooting live applications.
+• Knowledge of public cloud platforms such as AWS and Azure, including SaaS and
+PaaS services
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture. 
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Principal Artificial Intelligence (AI) Engineer in Kainos, you’ll be accountable for
+successful delivery of large-scale high-quality solutions that use AI and ML technologies
+that delight our customers and impact the lives of users worldwide.
+You will provide assurance and support to multi-skilled agile teams by understanding the
+outcomes the solution is trying to achieve, the data implications and complexity
+surrounding you and your teams' designs and helping teams make the right decisions.
+You’ll work with senior stakeholders to agree architectural principles, strategic direction
+and functional and non-functional designs. You will proactively develop new alliances
+with other vendors that will provide Kainos with new capability.
+As a technical leader, you will work with your colleagues to lead development of policy
+and standards, develop customer relationships, develop account strategies and share
+knowledge and mentor those around you. You’ll do this whilst advising about new
+technologies and approaches to data, with room to learn, develop and grow.You will
+manage, coach and develop a small number of staff, with a focus on managing
+employee performance and assisting in their career development. You’ll also provide
+direction and leadership for your team as you solve challenging problems together.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Proven experience being accountable for different sizes and shapes of production
+data delivery challenges, e.g. AI/ML service, multi-team programme, data
+platform, complex data migration.
+• Able to simply and clearly communicate Artificial Intelligence design in
+conversation, documentation and presentations to non-data scientists.
+• Able to assure the development of machine learning models, data storage and
+data processing to support AI/ML solutions.
+• Able to prioritise their time across multiple major projects particularly when working
+to deadlines.
+• Proven track record of successful delivery with major machine learning frameworks,
+languages and NLP frameworks.
+• Proven experience of technical ownership for an AI product/software project,
+including architecture, estimation, product planning and user story/requirement
+creation.
+• Drives forward Kainos AI business including developing specialisms that lead to new
+offerings.
+• Understands whole solution architecture concepts and can communicate and
+negotiate these with senior stakeholders.
+• Can prioritise non-functional concerns for customers and has experience
+incorporating these into the application design.
+• Is focused on improvement of process, people and use of technology.
+• Has experience with public cloud platforms, such as AWS and Azure, including SaaS
+and PaaS offerings.
+• Has pro-actively developed business across an account with sales and account
+managers.
+• Experience mentoring and coaching members of your team and wider community.
+• Can build credibility and communicate effectively with C-level stakeholders.
+• Understands commercial implications of design decisions and has influenced the
+commercial success of a product.
+• We are passionate about developing people – a demonstrated ability in
+managing, coaching and developing junior members of your team and wider
+community.
+DESIRABLE:
+• Actively shares their thoughts and views on technology.
+• Has participated in technology communities.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN)
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture. 
+
+JOB SPECIFICATION DESCRIPTION
+As a Principal Data Scientist in Kainos, you’ll be accountable for successful delivery of largescale high-quality solutions that use AI and ML technologies that delight our customers and
+impact the lives of users worldwide.
+You will provide assurance and support to multi-skilled agile teams by understanding the
+outcomes the solution is trying to achieve, the data implications and complexity
+surrounding you and your teams' designs and helping teams make the right decisions.
+You’ll work with senior stakeholders to agree architectural principles, strategic direction and
+functional and non-functional designs. You will proactively develop new alliances with other
+vendors that will provide Kainos with new capability.
+As a technical leader, you will work with your colleagues to lead development of policy
+and standards, develop customer relationships, develop account strategies and share
+knowledge and mentor those around you. You’ll do this whilst advising about new
+technologies and approaches to data, with room to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Proven experience being accountable for different sizes and shapes of production
+data delivery challenges, e.g. AI/ML service, multi-team programme, data
+platform, complex data migration.
+• Able to simply and clearly communicate machine learning model design in
+conversation, documentation and presentations to non-data scientists.
+• Able to assure the development of machine learning models, data storage and
+data processing to support AI/ML solutions.
+• Proven experience in cleansing, filtering and re-factoring complex data from
+different sources (including non-traditional data sources).
+• Able to prioritise their time across multiple major projects particularly when working
+to deadlines.
+• Drives forward Kainos AI business including developing specialisms that lead to new
+offerings.
+• Understands whole solution architecture concepts and can communicate and
+negotiate these with senior stakeholders.
+• Can prioritise non-functional concerns for customers and has experience
+incorporating these into the application design.
+• Has a mathematics / data science background, allowing effective communication
+with, assurance of and leadership of data scientists and AI engineers.
+• Is focused on improvement of process, people and use of technology.
+• Has experience with public cloud platforms, such as AWS and Azure, including SaaS
+and PaaS offerings.
+• Has pro-actively developed business across an account with sales and account
+managers.
+• Experience mentoring and coaching members of your team and wider community.
+• Can build credibility and communicate effectively with C-level stakeholders.
+© KAINOS 2020 PAGE: 2 OF 2
+• Understands commercial implications of design decisions and has influenced the
+commercial success of a product.
+DESIRABLE:
+• Actively shares their thoughts and views on technology.
+• Has participated in technology communities.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN).
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Senior Artificial Intelligence (AI) Engineer in Kainos, you’ll be responsible for developing
+high quality solutions that use AI and ML technologies which delight our customers and
+impact the lives of users worldwide. It’s a fast-paced environment so it is important for you
+to make sound, reasoned decisions. You’ll do this whilst learning about new technologies
+and approaches, with talented colleagues that will help you to learn, develop and grow as
+you, in turn, mentor those around you.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Proficient in designing, building, testing and maintaining production software
+applications that integrate AI services and include data science models.
+• Proficient applying mathematics principles to gain insight from data.
+• Experience of applying development patterns in relation to security, scalability and
+performance.
+• Contributing to technical decisions and direction in a collaborative team
+environment, including architecture, estimation, product planning, user
+story/requirement creation.
+• Experience of design and development across multiple layers of an application.
+• Implemented and developed new machine learning approaches and services.
+• Mentoring junior team members.
+DESIRABLE:
+• Good communication skills, able to communicate issues to technical and nontechnical people.
+• Experience of Continuous Integration and Continuous Delivery techniques.
+• Experience with major machine learning frameworks, languages and NLP
+frameworks.
+• Experience in cleansing, filtering and re-factoring complex data from different
+sources.
+• Experience of debugging and troubleshooting live applications.
+• Active participation in knowledge sharing activities, both within the team and with
+wider non- technical audiences.
+• Experience of balancing technical decisions with user needs and commercial
+constraints.
+• Knowledge of cloud platforms, such as AWS and Azure, including SaaS and PaaS
+services.
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Senior Data Scientist (Senior Associate) in Kainos, you’ll be responsible for developing
+high quality solutions that use AI and ML technologies to delight our customers and impact
+the lives of users worldwide. It’s a fast-paced environment so it is important for you to
+make sound, reasoned decisions. You’ll do this whilst learning about new technologies
+and approaches, with talented colleagues that will help you to learn, develop and grow
+as you, in turn, mentor those around you.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• A minimum of a 2.1 degree in Computer Science, Machine Learning, Data
+Science, Statistics or in a similar highly quantitative field.
+• Strong problem solving skills with demonstrable ability to learn new business
+concepts and domains quickly.
+• Strong programming skills in languages including Python/R.
+• Experience using multiple open source machine learning libraries (e.g. scikit-learn,
+caret, mlr, mllib).
+• Experience developing solutions across a number of cloud platforms (AWS, Azure or
+GCP).
+• Significant experience in cleansing, filtering and re-factoring complex data from
+different sources (including non-traditional data sources).
+• Experience of working with Relational databases, NoSQL and various visualisation
+techniques.
+• Experience in delivering AI/ML projects to production as part of a delivery team.
+• Strong interpersonal skills with the ability to lead client projects and establish
+requirements in non-technical language.
+• Experience of mentoring junior team members.
+DESIRABLE:
+• An advanced degree in Computer Science, Machine Learning, Operational
+Research, Statistics or in a similar highly quantitative field.
+• Multiple examples of delivering data science projects and predictive solutions to
+live in an industry production environment.
+• Experience of containerisation and cloud deployment.
+• Experience of Deep Learning Architectures (e.g. MLP, RNN, CNN).
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Trainee Artificial Intelligence (AI) Engineer in Kainos, you’ll be responsible for
+contributing to the development of high-quality solutions which integrate AI and ML
+technologies that delight our customers and impact the lives of users worldwide. You’ll do
+this whilst gaining awareness and learning about new AI technologies, frameworks and
+approaches, with talented colleagues that will help you to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Experience of building and testing software applications
+• Knowledge of AI and data science models
+• Appreciation of how to apply mathematics principles to gain insight from data.
+• Knowledge of major machine learning frameworks, languages and NLP
+frameworks.
+• Experience of applying common design principles and patterns.
+• Experience of working on own initiative and in a collaborative team environment.
+DESIRABLE:
+• Knowledge of modern version control and Continuous Delivery pipeline
+techniques.
+• Exposure to troubleshooting issues within development and test environments.
+• Exposure to multiple programming languages including Python, using tools such as
+Numpy, Scipy & Pandas.
+• Good communication skills, with the ability to communicate issues to other
+technical people, and sometimes to non-technical people.
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+JOB PROFILE DESCRIPTION
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Trainee Data Scientist in Kainos, you’ll be responsible for contributing to the
+development of high-quality solutions that use AI and ML technologies to delight our
+customers and impact the lives of users worldwide. You’ll do this whilst gaining awareness
+and learning about new technologies, and approaches, with talented colleagues that
+will help you to learn, develop and grow.
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• A minimum of a 2.1 degree in Computer Science, Machine Learning, Data
+Science, Statistics or in a similar highly quantitative field
+• Problem solving skills with an appreciation of how to apply mathematics principles
+to gain insight from data.
+• Experience of developing models in Python/R
+• Experience using machine learning libraries (e.g. scikit-learn, caret, mlr, mllib).
+• Knowledge of Relational databases, NoSQL and various visualisation techniques
+• Experience of working on own initiative and in a team environment.
+DESIRABLE:
+• An advanced degree (MSc, PhD) in highly quantitative field
+• Exposure to multiple programming languages including Python, using tools such as
+Numpy, Scipy & Pandas.
+• Good communication skills, with the ability to communicate issues to other
+technical people, and sometimes to non-technical people.
+• Experience of taking part in data science related hackathons, Kaggle competitions
+or Bootcamps
+• Exposure to AI cloud computing services e.g. (AWS SageMaker or Azure ML Studio)
+WHO YOU ARE:
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
+
+MAIN PURPOSE OF THE ROLE & RESPONSIBILITIES IN THE BUSINESS:
+As a Trainee Software Engineer with Kainos, you will work on projects where you can make
+a real difference to people’s lives – the lives of people you know. After taking part in our
+award-winning, seven-week Engineering Academy, you will then join one of our many
+project teams, to learn from our experienced developers, project managers and
+customer-facing staff. You’ll have great support and mentoring, balanced with the
+experience of being given real, meaningful work to do, to help you truly develop both
+technically and professionally.
+You will be responsible for:
+• Contribute to developing high quality solutions which impact the lives of users
+worldwide.
+• You’ll work as part of a team to solve problems and produce innovative software
+solutions.
+• Learn about new technologies and approaches, with talented colleagues who will
+help you learn, develop and grow.
+• Based in our Kainos office and often on our customer sites, you will work on a
+project teams to learn how to develop and unit test developing and unit testing
+straightforward or low complexity components, and then moving on to more
+complex elements as you increase your knowledge.
+• Work with other developers in working through designs and user stories and to
+produce real development solutions
+• Will be fully supported by experienced colleagues in the team to follow designs,
+and then progress to assist in any other aspect of the project life-cycle under
+supervision
+• Develop excellent technical, team-working and Agile project experience
+MINIMUM (ESSENTIAL) REQUIREMENTS:
+• Completed or are currently studying a relevant third level IT qualification
+• Familiar with some programming languages and implementation environments.
+• Some understanding of the software development lifecycle from your studies or
+relevant work experience, and the relevance of different tools at different stages of
+the development lifecycle
+• Able to make effective decisions with the support of team members, within fastmoving delivery environment.
+• Have an open attitude to sharing knowledge and information.
+• Ideally have some experience of working in a collaborative team environment
+• Good communication skills with the ability to communicate issues to other
+technical people and, sometimes, non-technical people
+• Good problem solving and analytical skills.
+• We all work in teams here in Kainos – a proven ability of strong team skills, including
+taking direction from others, is crucial.
+• Ability to carry out responsibilities in accordance with company policies,
+procedures and processes.
+• Ability to deliver tasks within a given timeframe.
+WHO YOU ARE
+Our vision is to enable outstanding people to create digital solutions that have a positive
+impact on people’s lives. Our values aren't abstract; they are the behaviours we expect
+from each other every day and underpin everything that we do. We expect everyone to
+display our values by being determined in how obstacles are overcome; honest when
+dealing with others; respectful of how you treat others; creative to find solutions to
+complex problems and cooperative by sharing information, knowledge and experience.
+These values, applied collectively, help to produce an outstanding Kainos person, team
+and culture.
