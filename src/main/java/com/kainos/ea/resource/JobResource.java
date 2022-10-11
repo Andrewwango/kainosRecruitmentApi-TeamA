@@ -1,14 +1,16 @@
 package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.*;
-import com.kainos.ea.models.Band;
-import com.kainos.ea.models.Capability;
-import com.kainos.ea.models.Competencies;
-import com.kainos.ea.models.Training;
+import com.kainos.ea.exception.InvalidJobRoleException;
+import com.kainos.ea.models.*;
+import com.kainos.ea.service.AddJobRoleService;
+import com.kainos.ea.validator.JobRoleValidator;
 import io.swagger.annotations.Api;
-import com.kainos.ea.models.JobRole;
+import org.eclipse.jetty.http.HttpStatus;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,14 +25,22 @@ public class JobResource {
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel) {
+    private AddJobRoleLevel addJobRoleLevel;
+    private AddJobRoleService addJobRoleService;
+
+    private JobRoleValidator jobRoleValidator;
+    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
         this.specificationLevel = specificationLevel;
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
+        this.addJobRoleLevel = addJobRoleLevel;
+        this.addJobRoleService = addJobRoleService;
+
     }
+
 
     @GET
     @Path("/job-roles")
@@ -79,5 +89,19 @@ public class JobResource {
     public List<Competencies> getCompetencies(@PathParam("bandID") int bandID) throws SQLException {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
+    }
+
+    @POST
+    @Path("/add-job-roles")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addJobRole(AddJobRole jobRole) throws InvalidJobRoleException {
+        try {
+            return Response.ok(addJobRoleService.addJobRole(jobRole)).build();
+        } catch (NullPointerException | InvalidJobRoleException e) {
+            return Response.status(HttpStatus.BAD_REQUEST_400).entity(e.getMessage()).build();
+        } catch (SQLException e) {
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
     }
 }
