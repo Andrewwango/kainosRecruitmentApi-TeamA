@@ -3,6 +3,7 @@ package com.kainos.ea.dao;
 import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.models.JobRole;
 
+import javax.ws.rs.core.Response;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,5 +65,22 @@ public class JobRoleLevel {
             throw e;
         }
         return jobs;
+    }
+
+    public Response deleteJobRoles(List<String> jobIDs) throws SQLException {
+        try {
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
+            Statement st = myConnection.createStatement();
+
+            for (int i = 0; i < jobIDs.size(); i++) {
+                Integer res = st.executeUpdate(
+                        "DELETE FROM jobRoles WHERE jobRoleID = " + jobIDs.get(i) + ";" );
+            }
+
+            return Response.status(200).build();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }
