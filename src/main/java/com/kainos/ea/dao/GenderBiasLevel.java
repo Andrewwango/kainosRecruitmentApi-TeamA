@@ -51,11 +51,11 @@ public class GenderBiasLevel {
             JSONArray female = obj.getJSONObject("biased_words").getJSONArray("biased_words_female");
             for (int i = 0; i < male.length(); i++)
             {
-                biased_words_male.add(male.getString(i) + " ");
+                biased_words_male.add(" " + male.getString(i));
             }
             for (int i = 0; i < female.length(); i++)
             {
-                biased_words_female.add(female.getString(i) + " ");
+                biased_words_female.add(" " + female.getString(i));
             }
             float roundedBias = (float) Math.round(percentage_bias * 10)/10;
             String percentage_bias_accurate = roundedBias + "%";
