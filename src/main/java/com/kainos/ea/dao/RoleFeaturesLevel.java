@@ -23,6 +23,10 @@ public class RoleFeaturesLevel {
 
             System.out.println(sql);
             System.out.println(jobRole.getRoleName());
+            System.out.println(jobRole.getSpecification());
+            System.out.println(jobRole.getResponsibility());
+            System.out.println(jobRole.getCapabilityID());
+            System.out.println(jobRole.getBandID());
             PreparedStatement statement = myConnection.prepareStatement(sql);
             statement.setString(1, jobRole.getRoleName());
             statement.setString(2, jobRole.getSpecification());
