@@ -4,8 +4,12 @@ This file contains functionality to calculating gender bias words and score for 
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score
+from tqdm import tqdm
 from .preprocess import document_to_tokens, document_length
 from gensim.models import KeyedVectors
+from gensim.test.utils import datapath
+
 
 def euclidean_similarities(v1: np.ndarray, v_all: np.ndarray) -> np.ndarray:
     """Calculate negative euclidean distance between v1 and each vector in v_all
@@ -41,7 +45,7 @@ def percentage_bias(document: str, scores: list) -> float:
     Returns:
         float: percentage of bias words
     """
-    return np.sum(np.abs(scores)) / document_length(document)
+    return np.sum(np.abs(scores)) / document_length(document) * 100
 
 def biased_words(tokens: list, scores: list) -> dict:
     """Return detected biased words
@@ -62,7 +66,7 @@ def biased_words(tokens: list, scores: list) -> dict:
 class GenderBiasScorer:
     """Class for calculating gender bias score for words and documents using a word vocabulary trained using word2vec
     """
-    def __init__(self, wv: KeyedVectors, group_m=None, group_f=None, metric="cosine", group_reduce="max"):
+    def __init__(self, wv: KeyedVectors, group_m=None, group_f=None, metric="cosine", group_reduce="max", verbose=False):
         """Initialise gender bias scoring for given model
 
         Args:
@@ -73,6 +77,7 @@ class GenderBiasScorer:
             group_reduce (str, optional): how to calculate difference between similarities to either gender bias group, choose from ["max", "mean"].
                 If "max", choose best absolute difference between similarities of input word and either bias group words. If "mean", choose
                 mean difference, which boils down to calculating similarities of input word and group means (mathematically bit iffy).  Defaults to "max".
+            verbose (bool, optional): print when words missing from vocabulary. Defaults to False.
 
         Raises:
             ValueError: metric not in ["cosine", "euclidean"]
@@ -81,6 +86,7 @@ class GenderBiasScorer:
         self.wv = wv
         self.group_m = ["male", "man", "he", "his", "masculine", "men"]       if group_m is None else group_m
         self.group_f = ["female", "woman", "she", "her", "feminine", "women"] if group_f is None else group_f
+        self.verbose = verbose
         
         assert(len(self.group_m) == len(self.group_f))
 
@@ -92,7 +98,7 @@ class GenderBiasScorer:
                 _ = self.wv[m]
                 _ = self.wv[f]
             except KeyError:
-                print(f"Bias group words {m}, {f} not found in model vocabulary")
+                if self.verbose: print(f"Bias group words {m}, {f} not found in model vocabulary")
                 continue
 
             self.group_m_vecs.append(self.wv[m])
@@ -112,15 +118,17 @@ class GenderBiasScorer:
         else:
             raise ValueError
         
-    def score_tokens(self, tokens: list) -> list:
+    def score_tokens(self, tokens: list, progress=False) -> list:
         """Calculate gender bias for list of tokens
 
         Args:
             tokens (list): word tokens
+            progress (bool): display progress
 
         Returns:
             list: gender bias scores of tokens
         """
+        tokens = tqdm(tokens) if progress else tokens
         return [self.score_token(token) for token in tokens]
 
     def score_token(self, token: str) -> float:
@@ -141,13 +149,14 @@ class GenderBiasScorer:
             similarities_f = self.metric(self.wv[token], self.group_f_vecs)
             similarities_diff = similarities_m - similarities_f
         except KeyError:
-            print(f"Tokens {token} not found in model vocabulary")
+            if self.verbose: print(f"Tokens {token} not found in model vocabulary")
             similarities_diff = np.zeros(len(self.group_m))
 
         return self.group_reduce(similarities_diff)
 
     def score_token_binary(self, token: str, thresh=0.1) -> int:
         """Calculate thresholded gender bias score giving either female bias, unbiased or male bias.
+            This is in fact "ternary": male/female/unbiased.
 
         Args:
             token (str): input token
@@ -159,29 +168,138 @@ class GenderBiasScorer:
         score = self.score_token(token)
         return (np.sign(score) * (np.abs(score) > thresh) + 1 - 1).astype(np.int8) #+1-1 hack to remove -0.0 examples
     
-    def score_tokens_binary(self, tokens: list, thresh=0.1) -> list:
+    def score_tokens_binary(self, tokens: list, thresh=0.1, progress=False) -> list:
         """Calculate thresholded gender bias scores for list of tokens
 
         Args:
             tokens (list): input tokens
             thresh (float, optional): absolute score threshold. Defaults to 0.1. Tuned as hyperparameter in testing.
+            progress (bool): display progress
 
         Returns:
             list: scores in (-1, 0 or 1) per token representing female bias, unbiased and male bias
         """
+        tokens = tqdm(tokens) if progress else tokens
         return [self.score_token_binary(token, thresh=thresh) for token in tokens]
     
-    def score_document(self, document: str, thresh=0.1) -> tuple[list, list]:
+    def score_document(self, document: str, thresh=0.1, progress=False) -> tuple[list, list]:
         """Calculate thresholded gender bias scores for raw document string.
 
         Args:
             document (str): Input document string (all on one line)
             thresh (float, optional): absolute score threshold. Defaults to 0.1. Tuned as hyperparameter in testing.
+            progress (bool): display progress
 
         Returns:
             list: tokens extracted from document (using same function as in corpus training)
             list: scores per token
         """
         tokens = document_to_tokens(document)
-        scores = self.score_tokens_binary(tokens, thresh=thresh)
+        scores = self.score_tokens_binary(tokens, thresh=thresh, progress=progress)
         return tokens, scores
+    
+    def lexicon_accuracy(self, lexicon: str, thresh=0.1, verbose=False, base_fn="data/lexicons") -> float:
+        """Evaluate gender bias scorer on labelled lexicon. Return accuracy of lexicon's gender bias labels
+            and predicted gender bias scores.
+
+        Args:
+            lexicon (str): name of lexicon, choose from ["bias", "test"]. Test lexicon is reality-check: words like
+                           "he", "she", "dog" should all be appropriately classified. Bias lexicon is a fun comparison
+                           with psychoanalytical lexicon from the literature, seeing if words that are clasically 
+                           psychologically and sociologically "biased" in job specs are also represented in a biased way 
+                           in unstructured text from the wild. The lexicon file should be csv with columns
+                           ["word", "label"].
+            thresh (float, optional): scoring threshold for tuning. See docs for score_token_binary(). Defaults to 0.1.
+            verbose (bool, optional): print words, labels and predictions. Defaults to False.
+            base_fn (str, optional): data folder for lexicon. Defaults to "data/lexicons".
+
+        Returns:
+            float: accuracy score of predictions compared to ground labels
+        """
+        lexicon = pd.read_csv(f"{base_fn}/{lexicon}_lexicon.csv")
+        lexicon["score"] = [self.score_token_binary(lexicon.iloc[i,0], thresh=thresh) for i in range(len(lexicon))]
+
+        #accuracy = np.mean(lexicon["label"]==lexicon["score"])
+        accuracy = accuracy_score(lexicon["label"], lexicon["score"])
+
+        if verbose:
+            print(lexicon[["word","label","score"]].to_string())
+
+        return accuracy
+    
+    def lexicon_n_absent_words(self, lexicon: str, base_fn="data/lexicons") -> int:
+        lexicon = pd.read_csv(f"{base_fn}/{lexicon}_lexicon.csv")
+        ret = 0
+        for i in range(len(lexicon)):
+            try:
+                _ = self.wv[lexicon.iloc[i,0]]
+            except KeyError:
+                ret += 1
+            except AttributeError: #no wv object because method called in EnsembleGenderBiasScorer
+                return 0
+        return ret
+    
+    def eval_gensim_human_dataset(self) -> float:
+        return self.wv.evaluate_word_pairs(datapath('wordsim353.tsv'))[0].statistic
+
+
+class EnsembleGenderBiasScorer(GenderBiasScorer):
+    """Class for gender bias scorer using ensemble of single gender bias scorers. Inherits from GenderBiasScorer.
+        Even though the test accuracy of the ensemble method is lower (see 03_test_model.ipynb), this is
+        expected to be more robust because biased words have to be "voted" in by all models.
+    """
+    def __init__(self, wvs: list, threshs: list, **kwargs):
+        """Initialise ensemble gender bias model using several word embedding models.
+
+        Args:
+            wvs (list): list of word vocabulary models of type gensim.models.KeyedVectors either from trained
+                        word2vec models or pretrained from gensim.downloader
+            threshs (list): list containing threshold for each model for binary scoring of gender bias
+            kwargs: kwargs to be passed to initialise all child GenderBiasScorers
+        """
+        self.wvs = wvs
+        self.threshs = threshs
+        self.scorers = [GenderBiasScorer(wv, **kwargs) for wv in wvs]
+    
+    def score_tokens(self, tokens: list) -> list:
+        """Ensemble method uses voting of binary scores, so raw scores are not possible.
+        """
+        raise NotImplementedError
+
+    def score_token(self, token: str) -> float:
+        """Ensemble method uses voting of binary scores, so raw scores are not possible.
+        """
+        raise NotImplementedError
+
+    def _mode(self, x: list) -> int:
+        # Return most common value of list
+        return max(set(x), key=x.count)
+    
+    def _mode_conflict(self, x: list) -> bool:
+        # Return whether there are multiple modes (i.e. undecided gender bias?)
+        c = [x.count(i) for i in set(x)]
+        return c.count(max(c)) > 1
+
+    def score_token_binary(self, token: str, thresh=0) -> int:
+        """Calculate thresholded gender bias score giving either female bias, unbiased or male bias,
+            using ensemble of models. This is in fact "ternary": male/female/unbiased.
+
+        Args:
+            token (str): input tokens to be scored
+            thresh (int, optional): Ignored parameter for easy integration with normal GenderBiasScorer:
+                                    thresholds for individual models in the ensemble are passed in constructor.
+
+        Returns:
+            int: gender bias score (-1=female biased, 0=unbiased, 1=male bias)
+        """
+        del thresh 
+
+        scores = [scorer.score_token_binary(token, thresh=thresh) for scorer,thresh in zip(self.scorers, self.threshs)]
+        
+        score = 0 if self._mode_conflict(scores) else self._mode(scores)
+        #print(scores, score)
+        return score
+
+    def eval_gensim_human_dataset(self) -> float:
+        corrs = [scorer.eval_gensim_human_dataset() for scorer in tqdm(self.scorers)]
+        return(sum(corrs)/len(corrs))
