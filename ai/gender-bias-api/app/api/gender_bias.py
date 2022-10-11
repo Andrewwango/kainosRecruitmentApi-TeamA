@@ -192,11 +192,15 @@ class GenderBiasScorer:
             similarities_m = self.metric(self.wv[token], self.group_m_vecs)
             similarities_f = self.metric(self.wv[token], self.group_f_vecs)
             similarities_diff = similarities_m - similarities_f
+            
+            #check if any similarities are super high, in which case just take that as definitive
+            definitive_bias = int(len(np.where(similarities_m > 0.995)[0]) > 0) - int(len(np.where(similarities_f > 0.995)[0]) > 0)
         except KeyError:
             if self.verbose: print(f"Tokens {token} not found in model vocabulary")
             similarities_diff = np.zeros(len(self.group_m))
+            definitive_bias = 0
 
-        return self.group_reduce(similarities_diff)
+        return self.group_reduce(similarities_diff) if definitive_bias == 0 else definitive_bias
 
     def score_token_binary(self, token: str, thresh=0.1) -> int:
         """Calculate thresholded gender bias score giving either female bias, unbiased or male bias.
@@ -341,7 +345,7 @@ class EnsembleGenderBiasScorer(GenderBiasScorer):
         scores = [scorer.score_token_binary(token, thresh=thresh) for scorer,thresh in zip(self.scorers, self.threshs)]
         
         score = 0 if self._mode_conflict(scores) else self._mode(scores)
-        #print(scores, score)
+        #print(token, scores, score)
         return score
 
     def eval_gensim_human_dataset(self) -> float:

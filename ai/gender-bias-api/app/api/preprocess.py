@@ -63,7 +63,7 @@ def token_filter(token: str, tag: str, stopwords=STOPWORDS, min_len=2, max_len=1
     """
     return token is not None and tag not in ("CD",) and token not in stopwords and min_len <= len(token) <= max_len
 
-def token_regex(token: str, regex=PAT_ALPHABETIC) -> str | None:
+def token_regex(token: str, regex=PAT_ALPHABETIC) -> str:
     """Apply regex to token
 
     Args:
@@ -143,7 +143,7 @@ def document_to_tokens(document: str, use_textblob=True, return_textblob=False) 
         tokens = simple_preprocess(document)
         tokens_filtered = remove_stopword_tokens(tokens, stopwords=STOPWORDS)
     
-    return tokens_filtered, blob if use_textblob and return_textblob else tokens_filtered
+    return (tokens_filtered, blob) if use_textblob and return_textblob else tokens_filtered
 
 class TrainingCorpus:
     """Class representing input training corpus for training word2vec models. Wraps an iterable to read corpus (1 line = 1 document), and tokenize each line.

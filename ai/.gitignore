@@ -5,6 +5,7 @@
 !data/eval/kainosspecs.txt
 *.npy
 *.pt
+*.gz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
