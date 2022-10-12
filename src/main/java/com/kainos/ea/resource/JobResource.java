@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -83,9 +84,8 @@ public class JobResource {
     @Path("/gender-bias")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public BiasRequest postGenderBias(String request) {
+    public BiasRequest postGenderBias(String request) throws IOException {
         BiasRequest genderBias = genderBiasLevel.getGenderBias(request);
         return genderBias;
     }
-
 }

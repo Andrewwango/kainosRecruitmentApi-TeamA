@@ -7,15 +7,13 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GenderBiasLevel {
 
-    public BiasRequest getGenderBias(@JsonProperty String request) {
+    public BiasRequest getGenderBias(@JsonProperty String request) throws IOException {
         try {
             URL url = new URL("https://74fc2jchyl.execute-api.eu-west-2.amazonaws.com/Prod/gender-bias-prediction");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -36,15 +34,13 @@ public class GenderBiasLevel {
                 os.write(input, 0, input.length);
             }
 
-
-
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     (conn.getInputStream())));
             String output;
             output = br.readLine();
             conn.disconnect();
-            List<String> biased_words_male = new ArrayList<String>();
-            List<String> biased_words_female = new ArrayList<String>();
+            List<String> biased_words_male = new ArrayList<>();
+            List<String> biased_words_female = new ArrayList<>();
             JSONObject obj = new JSONObject(output);
             Float percentage_bias = obj.getFloat("percentage_bias");
             JSONArray male = obj.getJSONObject("biased_words").getJSONArray("biased_words_male");
@@ -63,15 +59,10 @@ public class GenderBiasLevel {
             BiasRequest genderBias = new BiasRequest(percentage_bias_accurate, biased_words_male, biased_words_female);
             System.out.println(genderBias);
 
-
             return genderBias;
 
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }  catch (IOException e) {
+            throw e;
         }
-        return null;
     }
 }
