@@ -1,0 +1,9 @@
+echo "Copying model files from ../models to app/models"
+cp ../models/dataset_bug.pt app/models/dataset_bug.pt
+cp ../models/dataset_wikibios_merged.pt app/models/dataset_wikibios_merged.pt
+cp ../models/dataset_wikibios_merged.pt.syn1neg.npy app/models/dataset_wikibios_merged.pt.syn1neg.npy
+cp ../models/dataset_wikibios_merged.pt.wv.vectors.npy app/models/dataset_wikibios_merged.pt.wv.vectors.npy
+cp ../models/word2vec-google-news-300.gz app/models/word2vec-google-news-300.gz
+echo "Model files copied."
+
+sam build

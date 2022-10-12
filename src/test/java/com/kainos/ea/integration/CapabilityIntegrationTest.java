@@ -27,4 +27,13 @@ class CapabilityIntegrationTest {
 
         Assertions.assertTrue(response.size() > 0);
     }
+
+    @Test
+    void getCapabilities_shouldReturnListOfCapabilitiesNames() {
+        List<Capability> response = APP.client().target("http://localhost:8080/api/viewCapabilitiesNames")
+                .request()
+                .get(List.class);
+
+        Assertions.assertTrue(response.size() > 0);
+    }
 }
