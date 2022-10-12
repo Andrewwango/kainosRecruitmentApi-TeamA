@@ -13,7 +13,8 @@ public class AddJobRole {
     private String roleName;
     private String specification;
     private String link;
-    private String responsibility;
     private int bandID;
     private int capabilityID;
+    private String responsibility;
+
 }

@@ -21,6 +21,7 @@ public class AddJobRoleLevel {
             preparedSt.setInt(5, jobRole.getBandID());
             preparedSt.setString(6, jobRole.getResponsibility());
 
+
             int affectedRows = preparedSt.executeUpdate();
 
             try (ResultSet rs = preparedSt.getGeneratedKeys()) {
