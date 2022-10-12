@@ -12,6 +12,7 @@ public class DataBaseConnection {
         String user;
         String password;
         String host;
+        String database;
 
         if (conn != null) {
             return conn;
@@ -23,9 +24,10 @@ public class DataBaseConnection {
             Properties props = new Properties();
             props.load(propsStream);
 
-            user            = props.getProperty("user");
-            password        = props.getProperty("password");
-            host            = props.getProperty("host");
+            user            = System.getenv("DB_USERNAME");
+            password        = System.getenv("DB_PASSWORD");
+            host            = System.getenv("DB_HOST");
+
 
             if (user == null || password == null || host == null)
                 throw new IllegalArgumentException(
