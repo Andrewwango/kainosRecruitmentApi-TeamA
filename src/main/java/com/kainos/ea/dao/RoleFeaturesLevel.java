@@ -19,7 +19,6 @@ public class RoleFeaturesLevel {
                     "set roleName=? ,specification= ? ," +
                     " bandID=?, capabilityID=?,responsibility=?" +
                     " where jobRoleID=?;";
-//                    "(\"" + jobRole.getRoleName() + "\",\"" + jobRole.getSpecification() + "\",\"" + jobRole.getBandID() + "\",\"" + jobRole.getCapabilityID() + "\",\"" + jobRole.getResponsibility() + "\",\"" + jobRoleID + "\");";
 
             System.out.println(sql);
             System.out.println(jobRole.getRoleName());
@@ -42,7 +41,5 @@ public class RoleFeaturesLevel {
             throw e;
 
         }
-
     }
-
 }

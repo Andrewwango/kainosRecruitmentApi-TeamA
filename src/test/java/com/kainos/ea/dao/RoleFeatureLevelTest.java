@@ -44,5 +44,3 @@ public class RoleFeatureLevelTest {
                 () -> roleFeaturesLevel.editJobRole(1,jobRole));
     }
 }
-
-

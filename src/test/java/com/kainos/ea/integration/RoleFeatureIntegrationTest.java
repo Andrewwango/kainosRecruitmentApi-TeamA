@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import java.util.List;
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class RoleFeatureIntegrationTest {
@@ -21,7 +22,6 @@ public class RoleFeatureIntegrationTest {
             WebServiceApplication.class, null,
             new ResourceConfigurationSourceProvider()
     );
-
 
     @Test
     public void getCapabilities_shouldReturnListOfCapabilities() {
@@ -66,11 +66,6 @@ public class RoleFeatureIntegrationTest {
             Assertions.assertEquals(response, 500);
         }
         catch(Exception e){
-
-
         }
     }
-
     }
-
-
