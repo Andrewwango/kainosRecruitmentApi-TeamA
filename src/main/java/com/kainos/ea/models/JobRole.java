@@ -17,5 +17,4 @@ public class JobRole {
     private String responsibility;
     private int bandID;
     private int capabilityID;
-    private String responsibility;
 }

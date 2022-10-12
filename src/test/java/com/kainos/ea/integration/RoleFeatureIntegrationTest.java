@@ -15,6 +15,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+@ExtendWith(DropwizardExtensionsSupport.class)
 public class RoleFeatureIntegrationTest {
     static final DropwizardAppExtension<WebServiceConfiguration> APP = new DropwizardAppExtension<>(
             WebServiceApplication.class, null,
@@ -34,15 +35,15 @@ public class RoleFeatureIntegrationTest {
             Entity<?> entity = Entity.entity(jobRole, MediaType.APPLICATION_JSON_TYPE);
             //System.out.println(jobRole);
 
-            String response = APP.client().target("http://localhost:8080/api/editJobRole/1")
+            String response = APP.client().target("http://localhost:8080/api/editJobRole/58")
                     .request()
-                    .put(entity).readEntity(String.class);
+                    .put(Entity.entity(jobRole, MediaType.APPLICATION_JSON_TYPE)).readEntity(String.class);
 
             Assertions.assertTrue(response.length() > 0);
             System.out.println(response.length());
         }
         catch(Exception e){
-
+            System.out.println(e);
         }
     }
 
@@ -58,13 +59,14 @@ public class RoleFeatureIntegrationTest {
             Entity<?> entity = Entity.entity(jobRole, MediaType.APPLICATION_JSON_TYPE);
             //System.out.println(jobRole);
 
-            int response = APP.client().target("http://localhost:8080/api/editJobRole/1")
+            int response = APP.client().target("http://localhost:8080/api/editJobRole/58")
                     .request()
                     .put(entity).getStatus();
 
             Assertions.assertEquals(response, 500);
         }
         catch(Exception e){
+
 
         }
     }

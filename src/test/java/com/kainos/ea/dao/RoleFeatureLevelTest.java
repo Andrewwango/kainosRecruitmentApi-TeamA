@@ -27,11 +27,11 @@ public class RoleFeatureLevelTest {
         jobRole.setBandID(5);
         jobRole.setCapabilityID(1);
         jobRole.setSpecification("As a Data Analyst (Associate) in Kainos, you’ll be responsible for matching the needs of data insight with understanding of the available data. Data analysts work closely with customers to produce insight products including reports, dashboards and visualisations but also contribute to project understanding of existing data structures so that inputs and outputs are fully understood.");
-        jobRole.setRoleName("Data Analyst");
+        jobRole.setRoleName("Data Analyst - edited");
         jobRole.setResponsibility("You’ll be accountable for successful delivery of contemporary data solutions across multiple customers.");
         Mockito.when(roleFeaturesLevel.editJobRole(1,jobRole)).thenReturn(expectedResult);
 
-        String result = featuresLevel.editJobRole(1,jobRole);
+        String result = roleFeaturesLevel.editJobRole(1,jobRole);
 
         assertEquals("Data updated successfully",result);
     }
