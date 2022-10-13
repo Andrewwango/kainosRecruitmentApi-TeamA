@@ -15,6 +15,7 @@ import java.util.List;
 @ToString
 @Builder
 @Getter
+@AllArgsConstructor
 
 public class BiasRequest {
     private String percentage_bias;
