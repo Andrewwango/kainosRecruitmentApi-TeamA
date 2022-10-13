@@ -1,6 +1,7 @@
 package com.kainos.ea;
 
 import com.kainos.ea.dao.*;
+import com.kainos.ea.service.AddJobRoleService;
 import com.kainos.ea.utils.DataBaseConnection;
 import com.kainos.ea.resource.JobResource;
 import io.dropwizard.Application;
@@ -21,6 +22,10 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
     private GenderBiasLevel genderBiasLevel;
+
+    private AddJobRoleLevel addJobRoleLevel;
+
+    private AddJobRoleService addJobRoleService;
 
     private RoleFeaturesLevel roleFeaturesLevel;
 
@@ -52,10 +57,13 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         specificationLevel = new SpecificationLevel();
         trainingLevel = new TrainingLevel();
         competenciesLevel = new CompetenciesLevel();
+        addJobRoleLevel = new AddJobRoleLevel();
+        DataBaseConnection databaseConnector = new DataBaseConnection();
+        addJobRoleService = new AddJobRoleService(databaseConnector, new AddJobRoleLevel());
         roleFeaturesLevel = new RoleFeaturesLevel();
         genderBiasLevel = new GenderBiasLevel();
-      
-        environment.jersey().register(new JobResource(roleFeaturesLevel,jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel, genderBiasLevel));
+
+        environment.jersey().register(new JobResource(roleFeaturesLevel,jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel, addJobRoleLevel, addJobRoleService, genderBiasLevel));
       
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();

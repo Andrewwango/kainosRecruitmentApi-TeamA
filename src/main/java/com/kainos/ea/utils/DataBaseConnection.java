@@ -2,6 +2,7 @@ package com.kainos.ea.utils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Properties;
 
 public class DataBaseConnection {
@@ -12,20 +13,17 @@ public class DataBaseConnection {
         String user;
         String password;
         String host;
+        String database;
 
         if (conn != null) {
             return conn;
         }
 
         try {
-            FileInputStream propsStream =
-                    new FileInputStream("src/main/resources/Properties");
-            Properties props = new Properties();
-            props.load(propsStream);
 
-            user            = props.getProperty("user");
-            password        = props.getProperty("password");
-            host            = props.getProperty("host");
+            user            = System.getenv("DB_USERNAME");
+            password        = System.getenv("DB_PASSWORD");
+            host            = System.getenv("DB_HOST");
 
             if (user == null || password == null || host == null)
                 throw new IllegalArgumentException(
@@ -34,8 +32,8 @@ public class DataBaseConnection {
 
             ConnectionFactory connectionFactory = new ConnectionFactory();
 
-            conn = connectionFactory.createConnection("jdbc:mysql://"
-                    + host + ":" + "3306" + "/team_A",  props);
+            conn = DriverManager.getConnection("jdbc:mysql://"
+                    + host + ":" + "3306" + "/team_A?allowPublicKeyRetrieval=true&useSSL=false", user,password);
 
             return conn;
         } catch (Exception e) {

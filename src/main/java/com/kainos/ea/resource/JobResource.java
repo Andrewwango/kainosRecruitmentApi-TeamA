@@ -1,12 +1,18 @@
 package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.*;
+import com.kainos.ea.exception.InvalidJobRoleException;
+import com.kainos.ea.models.*;
+import com.kainos.ea.service.AddJobRoleService;
+import com.kainos.ea.validator.JobRoleValidator;
+import org.eclipse.jetty.http.HttpStatus;
 import com.kainos.ea.models.*;
 import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,8 +28,11 @@ public class JobResource {
     private CompetenciesLevel competenciesLevel;
     private GenderBiasLevel genderBiasLevel;
     private RoleFeaturesLevel roleFeaturesLevel;
+    private AddJobRoleLevel addJobRoleLevel;
+    private AddJobRoleService addJobRoleService;
+    private JobRoleValidator jobRoleValidator;
 
-    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, GenderBiasLevel genderBiasLevel) {
+    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService, GenderBiasLevel genderBiasLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
@@ -31,8 +40,11 @@ public class JobResource {
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
         this.genderBiasLevel = genderBiasLevel;
+        this.addJobRoleLevel = addJobRoleLevel;
+        this.addJobRoleService = addJobRoleService;
         this.roleFeaturesLevel = roleFeaturesLevel;
     }
+
 
     @GET
     @Path("/job-roles")
@@ -115,6 +127,20 @@ public class JobResource {
     public BiasRequest postGenderBias(String request) throws IOException {
         BiasRequest genderBias = genderBiasLevel.getGenderBias(request);
         return genderBias;
+    }
+
+    @POST
+    @Path("/add-job-roles")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addJobRole(AddJobRole jobRole) throws InvalidJobRoleException {
+        try {
+            return Response.ok(addJobRoleService.addJobRole(jobRole)).build();
+        } catch (NullPointerException | InvalidJobRoleException e) {
+            return Response.status(HttpStatus.BAD_REQUEST_400).entity(e.getMessage()).build();
+        } catch (SQLException e) {
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
     }
 
     @PUT
