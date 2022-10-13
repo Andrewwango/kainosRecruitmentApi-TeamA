@@ -30,6 +30,7 @@ public class JobRoleLevel {
                     .link(rs.getString("link"))
                     .bandID(rs.getInt("bandID"))
                     .capabilityID(rs.getInt("capabilityID"))
+                    .responsibility(rs.getString("responsibility"))
                     .build();
 
                 jobs.add(job);
