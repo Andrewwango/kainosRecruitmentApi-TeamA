@@ -128,6 +128,7 @@ public class JobResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteJobRoles(@JsonProperty("id") List<String> jobIDs) throws SQLException {
         Response response = jobRoleLevel.deleteJobRoles(jobIDs);
+        return response;
     }
     
     @POST
