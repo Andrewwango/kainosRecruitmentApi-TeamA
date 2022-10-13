@@ -17,8 +17,8 @@ public class AddJobRoleLevel {
             preparedSt.setString(1, jobRole.getRoleName());
             preparedSt.setString(2, jobRole.getSpecification());
             preparedSt.setString(3, jobRole.getLink());
-            preparedSt.setInt(4, jobRole.getCapabilityID());
-            preparedSt.setInt(5, jobRole.getBandID());
+            preparedSt.setInt(4, jobRole.getBandID());
+            preparedSt.setInt(5, jobRole.getCapabilityID());
             preparedSt.setString(6, jobRole.getResponsibility());
 
 
