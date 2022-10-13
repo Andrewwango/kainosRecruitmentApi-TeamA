@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,19 +26,20 @@ public class JobResource {
     private CapabilityLevel capabilityLevel;
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
+    private GenderBiasLevel genderBiasLevel;
+    private RoleFeaturesLevel roleFeaturesLevel;
     private AddJobRoleLevel addJobRoleLevel;
     private AddJobRoleService addJobRoleService;
     private JobRoleValidator jobRoleValidator;
-    private RoleFeaturesLevel roleFeaturesLevel;
 
-    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService) {
-
+    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService, GenderBiasLevel genderBiasLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
         this.specificationLevel = specificationLevel;
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
+        this.genderBiasLevel = genderBiasLevel;
         this.addJobRoleLevel = addJobRoleLevel;
         this.addJobRoleService = addJobRoleService;
         this.roleFeaturesLevel = roleFeaturesLevel;
@@ -116,6 +118,15 @@ public class JobResource {
     public List<Competencies> getCompetencies(@PathParam("bandID") int bandID) throws SQLException {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
+    }
+    
+    @POST
+    @Path("/gender-bias")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public BiasRequest postGenderBias(String request) throws IOException {
+        BiasRequest genderBias = genderBiasLevel.getGenderBias(request);
+        return genderBias;
     }
 
     @POST

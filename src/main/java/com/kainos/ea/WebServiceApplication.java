@@ -21,6 +21,7 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private SpecificationLevel specificationLevel;
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
+    private GenderBiasLevel genderBiasLevel;
 
     private AddJobRoleLevel addJobRoleLevel;
 
@@ -58,12 +59,11 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         competenciesLevel = new CompetenciesLevel();
         addJobRoleLevel = new AddJobRoleLevel();
         DataBaseConnection databaseConnector = new DataBaseConnection();
-
         addJobRoleService = new AddJobRoleService(databaseConnector, new AddJobRoleLevel());
-
         roleFeaturesLevel = new RoleFeaturesLevel();
+        genderBiasLevel = new GenderBiasLevel();
 
-        environment.jersey().register(new JobResource(roleFeaturesLevel,jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel, addJobRoleLevel, addJobRoleService));
+        environment.jersey().register(new JobResource(roleFeaturesLevel,jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel, addJobRoleLevel, addJobRoleService, genderBiasLevel));
       
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
