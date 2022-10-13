@@ -1,5 +1,6 @@
 package com.kainos.ea.resource;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kainos.ea.dao.*;
 import com.kainos.ea.exception.InvalidJobRoleException;
 import com.kainos.ea.models.*;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/api")
@@ -118,6 +120,15 @@ public class JobResource {
     public List<Competencies> getCompetencies(@PathParam("bandID") int bandID) throws SQLException {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
+    }
+
+    @DELETE
+    @Path("/delete-job-roles")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteJobRoles(@JsonProperty("id") List<String> jobIDs) throws SQLException {
+        Response response = jobRoleLevel.deleteJobRoles(jobIDs);
+        return response;
     }
     
     @POST
