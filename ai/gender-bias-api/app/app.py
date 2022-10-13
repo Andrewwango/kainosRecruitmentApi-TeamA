@@ -29,7 +29,7 @@ print("Scorer created.")
 
 
 def post_gender_bias(document: str) -> dict:
-    tokens, scores = ensemble_scorer.score_document(document)
+    tokens, scores = ensemble_scorer.score_document(document, commonsense_filter=True)
     words = biased_words(tokens, scores)
     bias = percentage_bias(document, scores)
 

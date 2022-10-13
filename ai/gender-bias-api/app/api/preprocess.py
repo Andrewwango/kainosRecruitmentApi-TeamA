@@ -42,26 +42,47 @@ your yours yourself yourselves
 lrb rrb lcb rcb lsb rsb
 -lrb- -rrb- -lcb- -rcb- -lsb- -rsb-
 """
-STOPWORDS = frozenset(w for w in STOPWORDS.split() if w)
+STOPWORDS = set(w for w in STOPWORDS.split() if w)
 
 # PAT_ALPHABETIC: regex taken from gensim.utils.PAT_ALPHABETIC for gensim's tokenizer. We use this on top of TextBlob tokenization
 # to ensure clean tokens.
 PAT_ALPHABETIC = re.compile('(((?![\d])\w)+)', re.UNICODE)
 
-def token_filter(token: str, tag: str, stopwords=STOPWORDS, min_len=2, max_len=15) -> bool:
+
+def token_commonsense_filter(token: str):
+    """Check whether to filter additional stopwords in inference mode
+    such as words that common sense deem it shouldn't be included.
+
+    Args:
+        token (str): input token
+
+    Returns:
+        bool: whether token passes common sense check
+    """
+    commonsense_stopwords = "biasinput abcdefg".split()
+    return token not in commonsense_stopwords
+
+
+def token_filter(token: str, tag: str, stopwords=STOPWORDS, min_len=2, max_len=15, commonsense_filter=False) -> bool:
     """Check if token is: not None, not a number, not a stopword, and reasonable length.
 
     Args:
         token (str): token word from tokenization
         tag (str): corresponding textblob POS tag of token (see https://www.geeksforgeeks.org/python-part-of-speech-tagging-using-textblob/)
-        stopwords (frozenset, optional): set of stopwords to remove. Defaults to constant STOPWORDS.
+        stopwords (set, optional): set of stopwords to remove. Defaults to constant STOPWORDS.
         min_len (int, optional): min acceptable length of tokens. Defaults to 2.
         max_len (int, optional): max acceptable length of tokens. Defaults to 15.
+        commonsense_filter (bool, optional): whether to filter additional stopwords in inference mode
+            such as words that common sense deem it shouldn't be included. Defaults to False.
 
     Returns:
         bool: whether token passes filter checks mentioned above
     """
-    return token is not None and tag not in ("CD",) and token not in stopwords and min_len <= len(token) <= max_len
+
+    filters = token is not None and tag not in ("CD",) and token not in stopwords and min_len <= len(token) <= max_len
+    if commonsense_filter:
+        filters = filters and token_commonsense_filter(token)
+    return filters 
 
 def token_regex(token: str, regex=PAT_ALPHABETIC) -> str:
     """Apply regex to token
@@ -113,9 +134,10 @@ def document_length(document: str) -> int:
         int: word count of input document
     """
     tokens = simple_preprocess(document)
+    tokens = [token for token in tokens if token_commonsense_filter(token)]
     return len(tokens)
 
-def document_to_tokens(document: str, use_textblob=True, return_textblob=False) -> list:
+def document_to_tokens(document: str, use_textblob=True, return_textblob=False, commonsense_filter=False) -> list:
     """Tokenise and preprocess raw document string. Preprocess includes lemmatization (only if use_textblob==True, 
         stopword removal, lower case, length filter, regex match to remove punctuation and remove numbers.)
 
@@ -126,6 +148,8 @@ def document_to_tokens(document: str, use_textblob=True, return_textblob=False) 
             other functionality is common to both methods. Defaults to True.
         return_textblob (bool, optional): whether to return the blob created during tokenization when use_textblob==True.
             Defaults to False.
+        commonsense_filter (bool, optional): whether to filter additional stopwords in inference mode
+            such as words that common sense deem it shouldn't be included. Defaults to False.
 
     Returns:
         if return_textblob==True and use_textblob==True:
@@ -138,7 +162,7 @@ def document_to_tokens(document: str, use_textblob=True, return_textblob=False) 
     if use_textblob:
         blob = TextBlob(document)
         tokens_tags = [(token_preprocess(token, tag), tag) for token, tag in blob.tags]
-        tokens_filtered = [token for token, tag in tokens_tags if token_filter(token, tag)]
+        tokens_filtered = [token for token, tag in tokens_tags if token_filter(token, tag, commonsense_filter=commonsense_filter)]
     else:
         tokens = simple_preprocess(document)
         tokens_filtered = remove_stopword_tokens(tokens, stopwords=STOPWORDS)
