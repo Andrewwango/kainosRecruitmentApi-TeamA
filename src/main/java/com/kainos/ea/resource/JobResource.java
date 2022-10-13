@@ -5,8 +5,9 @@ import com.kainos.ea.exception.InvalidJobRoleException;
 import com.kainos.ea.models.*;
 import com.kainos.ea.service.AddJobRoleService;
 import com.kainos.ea.validator.JobRoleValidator;
-import io.swagger.annotations.Api;
 import org.eclipse.jetty.http.HttpStatus;
+import com.kainos.ea.models.*;
+import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -24,12 +25,13 @@ public class JobResource {
     private CapabilityLevel capabilityLevel;
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
-
     private AddJobRoleLevel addJobRoleLevel;
     private AddJobRoleService addJobRoleService;
-
     private JobRoleValidator jobRoleValidator;
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService) {
+    private RoleFeaturesLevel roleFeaturesLevel;
+
+    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, AddJobRoleLevel addJobRoleLevel, AddJobRoleService addJobRoleService) {
+
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
@@ -38,7 +40,7 @@ public class JobResource {
         this.competenciesLevel = competenciesLevel;
         this.addJobRoleLevel = addJobRoleLevel;
         this.addJobRoleService = addJobRoleService;
-
+        this.roleFeaturesLevel = roleFeaturesLevel;
     }
 
 
@@ -128,5 +130,14 @@ public class JobResource {
         } catch (SQLException e) {
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
         }
+    }
+
+    @PUT
+    @Path("/editJobRole/{jobRoleID}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String putJobRoleChanges(@PathParam("jobRoleID") int jobID,JobRoleWithoutLink jobRole) throws SQLException {
+        String response = roleFeaturesLevel.editJobRole(jobID,jobRole);
+        return response;
     }
 }
