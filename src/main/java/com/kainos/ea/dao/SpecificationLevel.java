@@ -26,6 +26,7 @@ public class SpecificationLevel {
                         .link(rs.getString("link"))
                         .bandID(rs.getInt("bandID"))
                         .capabilityID(rs.getInt("capabilityID"))
+                        .responsibility(rs.getString("responsibility"))
                         .build();
                 jobRole = job;
             }

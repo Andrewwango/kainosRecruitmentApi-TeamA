@@ -21,8 +21,9 @@ public class JobResource {
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
     private GenderBiasLevel genderBiasLevel;
+    private RoleFeaturesLevel roleFeaturesLevel;
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, GenderBiasLevel genderBiasLevel) {
+    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel, GenderBiasLevel genderBiasLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
@@ -30,6 +31,7 @@ public class JobResource {
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
         this.genderBiasLevel = genderBiasLevel;
+        this.roleFeaturesLevel = roleFeaturesLevel;
     }
 
     @GET
@@ -38,6 +40,15 @@ public class JobResource {
     public List<JobRole> getJobRoles()
     throws SQLException {
         List<JobRole> jobRoles = jobRoleLevel.getJobRoles();
+        return jobRoles;
+    }
+
+    @GET
+    @Path("/job-roles-by-capability/{capabilityId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<JobRole> getJobRolesByCapability(@PathParam("capabilityId") int capabilityID)
+            throws SQLException {
+        List<JobRole> jobRoles = jobRoleLevel.getJobRolesByCapability(capabilityID);
         return jobRoles;
     }
 
@@ -58,10 +69,26 @@ public class JobResource {
     }
 
     @GET
+    @Path("/viewBandLevelNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Band> getBandNames() throws SQLException {
+        List<Band> bands = bandLevel.getBandNames();
+        return bands;
+    }
+
+    @GET
     @Path("/viewCapabilities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Capability> getCapabilities() throws SQLException {
         List<Capability> capabilities = capabilityLevel.getCapabilities();
+        return capabilities;
+    }
+
+    @GET
+    @Path("/viewCapabilitiesNames")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Capability> getCapabilitiesNames() throws SQLException {
+        List<Capability> capabilities = capabilityLevel.getCapabilitiesNames();
         return capabilities;
     }
 
@@ -80,6 +107,7 @@ public class JobResource {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
     }
+    
     @POST
     @Path("/gender-bias")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -87,5 +115,14 @@ public class JobResource {
     public BiasRequest postGenderBias(String request) throws IOException {
         BiasRequest genderBias = genderBiasLevel.getGenderBias(request);
         return genderBias;
+    }
+
+    @PUT
+    @Path("/editJobRole/{jobRoleID}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String putJobRoleChanges(@PathParam("jobRoleID") int jobID,JobRoleWithoutLink jobRole) throws SQLException {
+        String response = roleFeaturesLevel.editJobRole(jobID,jobRole);
+        return response;
     }
 }

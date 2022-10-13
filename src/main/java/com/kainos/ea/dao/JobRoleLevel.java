@@ -29,7 +29,35 @@ public class JobRoleLevel {
                     .link(rs.getString("link"))
                     .bandID(rs.getInt("bandID"))
                     .capabilityID(rs.getInt("capabilityID"))
+                    .responsibility(rs.getString("responsibility"))
                     .build();
+
+                jobs.add(job);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return jobs;
+    }
+
+    public static List<JobRole> getJobRolesByCapability(int capabilityID) throws SQLException {
+        List<JobRole> jobs = new ArrayList<>();
+
+        try {
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection myConnection = dataBaseConnection.getConnection();
+            Statement st = myConnection.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "SELECT * " + "FROM jobRoles WHERE capabilityID = " + capabilityID + ";");
+            while (rs.next()) {
+                JobRole job = JobRole.builder()
+                        .jobRoleId(rs.getInt("jobRoleID"))
+                        .roleName(rs.getString("roleName"))
+                        .specification(rs.getString("specification"))
+                        .link(rs.getString("link"))
+                        .bandID(rs.getInt("bandID"))
+                        .capabilityID(rs.getInt("capabilityID"))
+                        .build();
 
                 jobs.add(job);
             }

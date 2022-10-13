@@ -9,6 +9,7 @@ public class BandTest {
     public void checkBandObjectGetMethodsWork(){
         Band band = new Band(1,"Consultant","Workday Consultant");
 
+        assertEquals(band.getBandID(),1);
         assertEquals(band.getBandName(),"Consultant");
         assertEquals(band.getRoleName(),"Workday Consultant");
 
@@ -20,6 +21,7 @@ public class BandTest {
         band.setBandName("Associate");
         band.setRoleName("Workday Associate");
 
+        assertEquals(band.getBandID(),1);
         assertEquals(band.getBandName(),"Associate");
         assertEquals(band.getRoleName(),"Workday Associate");
 
