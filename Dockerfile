@@ -5,9 +5,9 @@ WORKDIR /code
 
 COPY . /code
 
-ARG DB_HOST
-ARG DB_PASSWORD
-ARG DB_USERNAME
+ARG DB_HOST=academy2020.cpc8rvmbbd9k.eu-west-2.rds.amazonaws.com
+ARG DB_PASSWORD=root
+ARG DB_USERNAME=JennicaM
 
 
 ENV DB_HOST ${DB_HOST}
