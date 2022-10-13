@@ -21,6 +21,8 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
 
+    private RoleFeaturesLevel roleFeaturesLevel;
+
     public static void main(final String[] args) throws Exception {
         new WebServiceApplication().run(args);
     }
@@ -49,8 +51,9 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
         specificationLevel = new SpecificationLevel();
         trainingLevel = new TrainingLevel();
         competenciesLevel = new CompetenciesLevel();
+        roleFeaturesLevel = new RoleFeaturesLevel();
 
-        environment.jersey().register(new JobResource(jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel));
+        environment.jersey().register(new JobResource(roleFeaturesLevel,jobRoleLevel, bandLevel, capabilityLevel, specificationLevel, competenciesLevel, trainingLevel));
       
         try {
             DataBaseConnection dataBaseConnection = new DataBaseConnection();

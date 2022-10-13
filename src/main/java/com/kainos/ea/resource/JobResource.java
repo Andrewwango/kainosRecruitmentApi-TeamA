@@ -1,12 +1,9 @@
 package com.kainos.ea.resource;
 
 import com.kainos.ea.dao.*;
-import com.kainos.ea.models.Band;
-import com.kainos.ea.models.Capability;
-import com.kainos.ea.models.Competencies;
-import com.kainos.ea.models.Training;
+import com.kainos.ea.models.*;
 import io.swagger.annotations.Api;
-import com.kainos.ea.models.JobRole;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -23,13 +20,16 @@ public class JobResource {
     private TrainingLevel trainingLevel;
     private CompetenciesLevel competenciesLevel;
 
-    public JobResource(JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel) {
+    private RoleFeaturesLevel roleFeaturesLevel;
+
+    public JobResource(RoleFeaturesLevel roleFeaturesLevel, JobRoleLevel jobRoleLevel, BandLevel bandLevel, CapabilityLevel capabilityLevel, SpecificationLevel specificationLevel, CompetenciesLevel competenciesLevel, TrainingLevel trainingLevel) {
         this.jobRoleLevel = jobRoleLevel;
         this.bandLevel = bandLevel;
         this.capabilityLevel = capabilityLevel;
         this.specificationLevel = specificationLevel;
         this.trainingLevel = trainingLevel;
         this.competenciesLevel = competenciesLevel;
+        this.roleFeaturesLevel = roleFeaturesLevel;
     }
 
     @GET
@@ -105,4 +105,14 @@ public class JobResource {
         List<Competencies> competencies = competenciesLevel.getCompetencies(bandID);
         return competencies;
     }
+
+    @PUT
+    @Path("/editJobRole/{jobRoleID}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String putJobRoleChanges(@PathParam("jobRoleID") int jobID,JobRoleWithoutLink jobRole) throws SQLException {
+        String response = roleFeaturesLevel.editJobRole(jobID,jobRole);
+        return response;
+    }
+
 }
