@@ -21,10 +21,4 @@ public class BiasRequest {
     private List<String> biased_words_male;
     private List<String> biased_words_female;
 
-    public BiasRequest (@JsonProperty("percentage_bias") String percentage_bias, @JsonProperty("percentage_bias") List<String> biased_words_male, @JsonProperty("percentage_bias") List<String> biased_words_female) {
-        this.percentage_bias = percentage_bias;
-        this.biased_words_male = biased_words_male;
-        this.biased_words_female = biased_words_female;
-    }
-
 }
