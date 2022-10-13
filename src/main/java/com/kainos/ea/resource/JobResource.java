@@ -117,5 +117,4 @@ public class JobResource {
         Response response = jobRoleLevel.deleteJobRoles(jobIDs);
         return response;
     }
-
 }
