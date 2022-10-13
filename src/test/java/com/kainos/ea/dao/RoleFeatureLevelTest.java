@@ -35,6 +35,7 @@ public class RoleFeatureLevelTest {
 
         assertEquals("Data updated successfully",result);
     }
+
     @Test
     public void editJobRole_shouldThrowSQLException_whenProvoked() throws SQLException {
         Mockito.when(databaseConnector.getConnection()).thenReturn(conn);

@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.util.List;
+
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class RoleFeatureIntegrationTest {
     static final DropwizardAppExtension<WebServiceConfiguration> APP = new DropwizardAppExtension<>(
@@ -33,7 +34,6 @@ public class RoleFeatureIntegrationTest {
             jobRole.setResponsibility("Responsibility");
             jobRole.setSpecification("Spec");
             Entity<?> entity = Entity.entity(jobRole, MediaType.APPLICATION_JSON_TYPE);
-            //System.out.println(jobRole);
 
             String response = APP.client().target("http://localhost:8080/api/editJobRole/58")
                     .request()
@@ -57,7 +57,6 @@ public class RoleFeatureIntegrationTest {
             jobRole.setResponsibility("Responsibility");
             jobRole.setSpecification("Spec");
             Entity<?> entity = Entity.entity(jobRole, MediaType.APPLICATION_JSON_TYPE);
-            //System.out.println(jobRole);
 
             int response = APP.client().target("http://localhost:8080/api/editJobRole/58")
                     .request()
