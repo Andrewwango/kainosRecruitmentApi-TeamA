@@ -230,19 +230,21 @@ class GenderBiasScorer:
         tokens = tqdm(tokens) if progress else tokens
         return [self.score_token_binary(token, thresh=thresh) for token in tokens]
     
-    def score_document(self, document: str, thresh=0.1, progress=False) -> tuple[list, list]:
+    def score_document(self, document: str, thresh=0.1, progress=False, commonsense_filter=False) -> tuple[list, list]:
         """Calculate thresholded gender bias scores for raw document string.
 
         Args:
             document (str): Input document string (all on one line)
             thresh (float, optional): absolute score threshold. Defaults to 0.1. Tuned as hyperparameter in testing.
             progress (bool): display progress
+            commonsense_filter (bool, optional): whether to filter additional stopwords in inference mode
+                such as words that common sense deem it shouldn't be included. Defaults to False.
 
         Returns:
             list: tokens extracted from document (using same function as in corpus training)
             list: scores per token
         """
-        tokens = document_to_tokens(document)
+        tokens = document_to_tokens(document, commonsense_filter=commonsense_filter)
         scores = self.score_tokens_binary(tokens, thresh=thresh, progress=progress)
         return tokens, scores
     
